@@ -1,14 +1,20 @@
 import HelloWorld from '@/components/HelloWorld'
-import Login from '@/views/login/Login'
+import Home from '@/views/Home'
+import SignIn from '@/views/SignIn'
+import SignUp from '@/views/SignUp'
 
 let routes = [{
   path: '/',
-  name: 'HelloWorld',
-  component: HelloWorld
+  name: 'Home',
+  component: Home
 }, {
-  path: '/login',
-  name: 'Login',
-  component: Login
+  path: '/signin',
+  name: 'SignIn',
+  component: SignIn
+}, {
+  path: '/signup',
+  name: 'SignUp',
+  component: SignUp
 }];
 
 export default routes;
