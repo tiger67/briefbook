@@ -2,19 +2,28 @@ import HelloWorld from '@/components/HelloWorld'
 import Home from '@/views/Home'
 import SignIn from '@/views/SignIn'
 import SignUp from '@/views/SignUp'
+import Sign from '@/views/Sign'
 
 let routes = [{
   path: '/',
   name: 'Home',
   component: Home
 }, {
-  path: '/signin',
+  path: '/sign_in',
   name: 'SignIn',
-  component: SignIn
+  component: Sign,
+  children: [{
+    path: '',
+    component: SignIn
+  }]
 }, {
-  path: '/signup',
+  path: '/sign_up',
   name: 'SignUp',
-  component: SignUp
+  component: Sign,
+  children: [{
+    path: '',
+    component: SignUp
+  }]
 }];
 
 export default routes;
