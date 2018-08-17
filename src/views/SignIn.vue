@@ -66,9 +66,7 @@ export default {
     togglesign: function() {
       this.issign = !this.issign;
     },
-    submit: function() {
-
-    }
+    submit: function() {}
   }
 }
 
