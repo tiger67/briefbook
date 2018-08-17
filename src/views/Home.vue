@@ -20,12 +20,20 @@
 </template>
 <style scoped>
 .main {
-    padding-top: 56px;
+  padding-top: 56px;
+}
+
+.main>.container {
+  border: 1px solid red;
+  min-height: 1000px;
 }
 
 </style>
 <script>
-import Nav from "./Nav"
+import '@/styles/common.css';
+import '@/styles/public.css';
+import '@/styles/fonts.css';
+import Nav from "./nav/Index.vue";
 export default {
   data() {
     return {

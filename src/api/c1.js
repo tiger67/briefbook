@@ -1,3 +1,3 @@
 export default [
-    { url: "login", method: "post", params: ["name", "password"] }
+  { url: "signin", method: "post", params: ["nickname", "password"] }
 ]
