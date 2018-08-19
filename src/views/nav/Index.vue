@@ -34,8 +34,8 @@
               <router-link to="/news" class="notification-btn">
                 <span class="menu-text">消息</span>
                 <span class="badge">1</span>
+                <sub-nav class='sub-nav'></sub-nav>
               </router-link>
-              <sub-nav class='sub-nav'></sub-nav>
             </li>
             <li class="nav-tab notification">
             </li>
@@ -59,7 +59,6 @@ export default {
   name: 'Nav',
   data() {
     return {
-
       signshow: false,
       issignup: false
     }
@@ -190,7 +189,7 @@ export default {
     color: #ea6f5a;
 }
 
-.nav>.nav-tab>a:not(.router-link-exact-active):hover {
+.nav-tab>a:not(.router-link-exact-active):hover {
     background-color: #f5f5f5
 }
 

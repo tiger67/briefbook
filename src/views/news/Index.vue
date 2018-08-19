@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height:1600px">
     <h1>news 页面</h1>
     <div @click="add(true)">点击我+</div>
     <div @click="add(false)">点击我-</div>
@@ -11,7 +11,6 @@ import cdata from "../../data.js"
 export default {
   data() {
     return {
-
       lists: cdata.lists
     }
   },

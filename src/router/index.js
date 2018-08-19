@@ -25,5 +25,19 @@ let r = r1.concat(r2).concat([{
 ]);
 
 export default new Router({
-  routes: r
+  routes: r,
+  scrollBehavior(to, from, savedPosition) {
+    console.log(to);
+    console.log(from);
+    console.log(savedPosition);
+    return { x: 0, y: 0 }
+    /*
+if (savedPosition) {
+  return savedPosition
+} else {
+  return { x: 0, y: 0 }
+}
+*/
+  }
+
 })

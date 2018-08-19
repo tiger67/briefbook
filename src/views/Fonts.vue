@@ -14,14 +14,7 @@ let str = "ic-info .ic-arrow .ic-search .ic-qq_connect .ic-douban .ic-location .
 var fonts = str.split(/\s\./)
 export default {
   data() {
-    return {
-      fonts: fonts
-    }
-  },
-  methods: {
-
-  },
-  mounted() {
+    return { fonts: fonts }
 
   }
 }
@@ -29,44 +22,42 @@ export default {
 </script>
 <style>
 #fonts-example {
-  width: 1275px;
-  margin: 20px auto 50px;
+    width: 1275px;
+    margin: 20px auto 50px;
 }
 
 #fonts-example:before,
 #fonts-example:after {
-  display: table;
-  content: '';
-  clear: both;
+    display: table;
+    content: '';
+    clear: both;
 }
 
-
-
-
-
 .fonts-example-title {
-  color: #ea6f5a;
-  font-size: 26px;
-  clear: both;
+    color: #ea6f5a;
+    font-size: 26px;
+    clear: both;
 }
 
 .font-wrap {
-  float: left;
-  width: 180px;
-  font-size: 26px;
-  padding: 20px 0px;
-  border: 1px solid #eee;
-  text-align: center;
-  margin-top: -1px;
-  margin-left: -1px;
+    float: left;
+    width: 180px;
+    font-size: 26px;
+    padding: 20px 0px;
+    border: 1px solid #eee;
+    text-align: center;
+    margin-top: -1px;
+    margin-left: -1px;
 }
 
 .font-text {
-  display: block;
-  text-align: center;
-  font-size: 15px;
-  margin-top: 5px;
-  color: #888;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 5px;
+    color: #888;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 </style>
