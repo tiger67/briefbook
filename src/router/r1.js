@@ -36,7 +36,6 @@ let routes = [{
     name: 'Writer',
     component: Writer
   }
-
 ];
 
 export default routes;

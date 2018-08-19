@@ -13,11 +13,6 @@
         <i class="iconfont ic-user"></i>
         <div class="error-tip"></div>
       </div>
-      <!-- <div class="input-box">
-        <input type="text" placeholder="手机号" v-model="telephone">
-        <i class="iconfont ic-user"></i>
-        <div class="error-tip"></div>
-      </div> -->
       <div class="submit-box">
         <input type="submit" @click.prevent="submit" value="登录">
       </div>
@@ -63,49 +58,3 @@ export default {
 }
 
 </script>
-<style scoped>
-.sign-pg footer {
-    margin-top: 50px;
-    padding: 60px;
-}
-
-.sign-pg .sign-o-link {
-    font-size: 30px;
-}
-
-.sign-pg .sign-hr {
-    border: 1px solid red;
-}
-
-.sign-pg header {}
-
-.sign-pg .logo {
-    position: absolute;
-    top: 56px;
-    left: 50px;
-}
-
-.sign-pg {
-    height: 100%;
-    min-height: 750px;
-    text-align: center;
-    font-size: 14px;
-    background-color: #f1f1f1;
-}
-
-.sign-pg .logo img {
-    width: 100px;
-}
-
-.sign-pg .sign-panel {
-    width: 400px;
-    margin: 60px auto 0;
-    padding: 50px 50px 30px;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, .1);
-    vertical-align: middle;
-    display: inline-block;
-}
-
-</style>

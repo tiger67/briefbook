@@ -1,11 +1,12 @@
 <template>
   <ul class="s-nav" @mouseenter="enter(true)" @mouseleave="enter(false)">
-    <li v-for="nav in navlists">
+    <li v-for="nav in lists">
       <nav-line></nav-line>
     </li>
   </ul>
 </template>
 <script>
+import cdata from "../../data.js"
 import NavLine from "./NavLine"
 export default {
   props: {
@@ -13,13 +14,9 @@ export default {
   },
   data() {
     return {
+      lists: cdata.lists,
       navlists: [
-        { icon: "", text: "", url: "" },
-        { icon: "", text: "", url: "" },
-        { icon: "", text: "", url: "" },
-        { icon: "", text: "", url: "" },
-        { icon: "", text: "", url: "" },
-        { icon: "", text: "", url: "" },
+
       ]
     }
   },
@@ -37,12 +34,12 @@ export default {
 </script>
 <style>
 .s-nav {
-  position: absolute;
-  height: auto;
-  width: 200px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
-  padding: 5px 0;
-  background-color: #fff;
+    position: absolute;
+    height: auto;
+    width: 200px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    padding: 5px 0;
+    background-color: #fff;
 }
 
 </style>
