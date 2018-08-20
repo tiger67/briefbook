@@ -15,7 +15,8 @@
         <a href="javascript:void(0);" @click.prevent="toggle(true,true)">注册框</a>
       </div>
       <transition name="fade" mode="out-in">
-        <pop-sign v-if="signshow" @close="toggle(false)" @swichsignup="swichsignup" :issignup="issignup"></pop-sign>
+        <pop-sign v-if="signshow" @close="toggle(false)" @swichsignup="swichsignup" :issignup="issignup">
+        </pop-sign>
       </transition>
       <div class="container">
         <div class="nav-menu-collapse">
@@ -104,7 +105,7 @@ export default {
     border-width: 0 0 1px;
     border-color: #e7e7e7;
     background: #fff;
-    z-index: 2;
+    z-index: 999;
 }
 
 .nav {

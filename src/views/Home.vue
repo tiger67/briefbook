@@ -8,14 +8,15 @@
     </div>
   </div>
 </template>
-<style scoped>
+<style>
 .main {
     padding-top: 56px;
 }
 
 .main>.container {
-    border: 1px solid red;
+    border: 0px solid red;
     min-height: 1000px;
+    border-radius: 5px;
 }
 
 </style>
