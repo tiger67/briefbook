@@ -2,11 +2,14 @@
   <div class="row">
     <div class="left-m">
       <swiper></swiper>
-      <recommend-list></recommend-list>
+      <recommend-subject></recommend-subject>
       <div class="split-line"></div>
       <article-list/>
     </div>
-    <div class="right-m"></div>
+    <div class="right-m">
+      <board/>
+      <app-share/>
+    </div>
   </div>
 </template>
 <style>
@@ -18,7 +21,7 @@
 .left-m {
     float: left;
     width: 66.66667%;
-    border: 1px solid #ccc;
+    /*  border: 1px solid #ccc; */
     padding-top: 30px;
     padding-left: 15px;
 }
@@ -28,19 +31,23 @@
     margin-left: 4.16667%;
     width: 29.16667%;
     padding: 30px 0 0;
-    border: 1px solid #ccc;
+    /*   border: 1px solid #ccc; */
 }
 
 </style>
 <script>
 import Swiper from "./Swiper"
-import RecommendList from "./RecommendList"
+import RecommendSubject from "./RecommendSubject"
 import ArticleList from "./ArticleList"
+import Board from "./Board"
+import AppShare from "./AppShare"
 export default {
   components: {
     Swiper,
-    RecommendList,
-    ArticleList
+    RecommendSubject,
+    ArticleList,
+    Board,
+    AppShare
   }
 }
 

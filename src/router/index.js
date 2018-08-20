@@ -26,6 +26,7 @@ let r = r1.concat(r2).concat([{
 
 export default new Router({
   routes: r,
+  //mode: 'history',
   scrollBehavior(to, from, savedPosition) {
     /*console.log(to);
 console.log(from);
