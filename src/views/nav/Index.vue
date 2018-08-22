@@ -1,23 +1,41 @@
 <template>
   <div class="nav nav-fixed nav-wrap">
     <div class="nav-layout" style="position:relative">
-      <router-link class="logo" to="/"><img src="../../assets/nav-logo.png"></router-link>
-      <router-link class="btn write-btn" to="/writer">
-        <i class="iconfont ic-write"></i>写文章
-      </router-link>
-      <router-link to="/404" class="style-mode-btn">
-        <i class="iconfont ic-navigation-mode"></i>
-      </router-link>
-      <div style="position:absolute;right:220px;top:20px;font-size:16px;">
+      <div style="float:right" class="nav-right-wrap">
+        <router-link class="btn write-btn" to="/writer">
+          <i class="iconfont ic-write"></i>写文章
+        </router-link>
+        <span class="nav-user" v-if="c.isSignIned">
+        <router-link class="user-logo-wrap" to="/404">
+          <img src="@/assets/home/nav/user-logo.jpg" alt="用户标识">
+        </router-link>
+        <user-sub-nav class="user-sub-nav" />
+        </span>
+        <span v-if="!c.isSignIned && $route.name=='home'">
+        <router-link  class="btn nav-sign-up-btn" to="/sign_up">
+         注册
+        </router-link>
+         <router-link  to="/sign_in" class="btn nav-sign-in-btn">
+         登录
+        </router-link>
+        </span>
+        <span v-if="!c.isSignIned && $route.name!='home'">
+        <a href="javascript:void(0);" class="btn nav-sign-up-btn" @click.prevent="toggle(true,true)">注册</a>
+        <a href="javascript:void(0);" class="btn nav-sign-in-btn" @click.prevent="toggle(true)">登录</a>
+        </span>
+        <router-link to="/404" class="style-mode-btn">
+          <i class="iconfont ic-navigation-mode"></i>
+        </router-link>
+      </div>
+      <div style="position:absolute;right:380px;top:20px;font-size:16px;display:none;">
         <router-link to="/sign_in">登录</router-link>
         <router-link to="/sign_up">注册</router-link>
-        <a href="javascript:void(0);" @click.prevent="toggle(true)">登录框</a>
-        <a href="javascript:void(0);" @click.prevent="toggle(true,true)">注册框</a>
       </div>
       <transition name="fade" mode="out-in">
         <pop-sign v-if="signshow" @close="toggle(false)" @swichsignup="swichsignup" :issignup="issignup">
         </pop-sign>
       </transition>
+      <router-link class="logo" to="/"><img src="@/assets/nav-logo.png"></router-link>
       <div class="container">
         <div class="nav-menu-collapse">
           <ul class="nav">
@@ -45,6 +63,7 @@
             <li class="nav-tab ">
               <search-box></search-box>
             </li>
+            <li></li>
           </ul>
         </div>
       </div>
@@ -52,9 +71,12 @@
   </div>
 </template>
 <script>
+import "./anav.css"
 import SubNav from "./SubNav";
 import PopSign from "../sign/PopSign"
 import SearchBox from "./SearchBox"
+import UserSubNav from "./UserSubNav"
+import data from "data"
 export default {
   props: {
     hasSignIn: Boolean
@@ -63,13 +85,18 @@ export default {
   data() {
     return {
       signshow: false,
-      issignup: false
+      issignup: false,
+      c: data
     }
+  },
+  updated: function() {
+    /*console.log(this.$router); console.log(this.$route);*/
   },
   components: {
     SubNav,
     PopSign,
-    SearchBox
+    SearchBox,
+    UserSubNav
   },
   methods: {
     swichsignup: function(flag) {
@@ -83,137 +110,11 @@ export default {
         this.signshow = !this.signshow;
       }
     }
+  },
+  beforeRouteEnter: function() {
+    console.log("11111")
+    console.log(arguments)
   }
 }
 
 </script>
-<style>
-.sub-nav {
-  display: none;
-  z-index: 3;
-  background-color: #fff;
-}
-
-.nav-tab:hover .sub-nav {
-  display: block
-}
-
-.nav-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  border-style: solid;
-  border-width: 0 0 1px;
-  border-color: #e7e7e7;
-  background: #fff;
-  z-index: 999;
-}
-
-.nav {
-  height: 56px;
-}
-
-.menu-text {
-  font-size: 17px;
-}
-
-.menu-icon {
-  display: inherit;
-  float: left;
-  font-size: 20px;
-  margin-right: 5px;
-}
-
-.nav-wrap {
-  margin-bottom: 20px;
-}
-
-.nav .style-mode-btn {
-  float: right;
-  line-height: 20px;
-  padding: 17px 10px 17px 15px;
-  font-size: 24px;
-  color: #969696;
-}
-
-.nav .write-btn {
-  float: right;
-  width: 100px;
-  height: 40px;
-  line-height: 24px;
-  margin: 8px 15px 0;
-  border-radius: 20px;
-  font-size: 15px;
-  color: #fff;
-  background-color: #ea6f5a;
-}
-
-.write-btn .ic-write {
-  margin-right: 3px;
-  font-size: 19px;
-  vertical-align: middle;
-}
-
-.badge {
-  padding: 3px 6px;
-  font-size: 13px!important;
-  background-color: #ea6f5a;
-}
-
-.nav-list {
-  margin-left: -15px;
-}
-
-.nav-layout {
-  min-width: 768px;
-  max-width: 1440px;
-  margin: 0 auto;
-  height: 100%;
-}
-
-.nav-menu-collapse {
-  margin-left: -15px;
-}
-
-.logo img {
-  height: 100%;
-}
-
-.nav-tab {
-  float: left;
-  margin-right: 10px;
-  position: relative;
-}
-
-.nav-tab>a {
-  display: block;
-  height: 56px;
-  line-height: 26px;
-  padding: 15px;
-  text-decoration: none;
-  position: relative;
-}
-
-.nav-tab>.router-link-exact-active {
-  color: #ea6f5a;
-}
-
-.nav-tab>a:not(.router-link-exact-active):hover {
-  background-color: #f5f5f5
-}
-
-.nav-layout>.logo {
-  float: left;
-  height: 56px;
-  padding: 0;
-}
-
-.notification-btn .badge {
-  position: absolute;
-  top: 10px;
-  right: -5px;
-  color: #fff!important;
-}
-
-</style>

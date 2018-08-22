@@ -8,14 +8,14 @@
         <div class="error-tip"></div>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="设置密码" v-model="password">
-        <input type="text" name="password" hidden>
-        <i class="iconfont ic-user"></i>
+        <input type="text" placeholder="手机号" v-model="telephone">
+        <i class="iconfont ic-phonenumber"></i>
         <div class="error-tip"></div>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="手机号" v-model="telephone">
-        <i class="iconfont ic-user"></i>
+        <input type="text" placeholder="设置密码" v-model="password">
+        <input type="text" name="password" hidden>
+        <i class="iconfont ic-password"></i>
         <div class="error-tip"></div>
       </div>
       <div class="submit-box">

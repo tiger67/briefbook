@@ -12,6 +12,7 @@
 </template>
 <script>
 import "./asign-form.css";
+import "./asign-form-detail.css";
 export default {
   data() {
     return {
@@ -25,9 +26,7 @@ export default {
     togglesign: function() {
       this.issign = !this.issign;
     },
-    submit: function() {
-
-    }
+    submit: function() {}
   }
 }
 

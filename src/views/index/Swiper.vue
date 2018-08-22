@@ -23,23 +23,23 @@ export default {
       preActive: 0,
       lists: [{
           url: '/',
-          img: require('../../assets/swiper/1.jpg')
+          img: require('@/assets/swiper/1.jpg')
         },
         {
           url: '/',
-          img: require('../../assets/swiper/2.jpg')
+          img: require('@/assets/swiper/2.jpg')
         },
         {
           url: '/',
-          img: require('../../assets/swiper/3.jpg')
+          img: require('@/assets/swiper/3.jpg')
         },
         {
           url: '/',
-          img: require('../../assets/swiper/4.jpg')
+          img: require('@/assets/swiper/4.jpg')
         },
         {
           url: '/',
-          img: require('../../assets/swiper/5.png')
+          img: require('@/assets/swiper/5.png')
         }
       ]
     }
@@ -82,134 +82,134 @@ export default {
 </script>
 <style>
 .swiper {
-    border: 0px solid green;
-    border-radius: 6px;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 35px;
+  border: 0px solid green;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 35px;
 }
 
 .swp-p-container {
-    position: relative;
+  position: relative;
 }
 
 .swp-img-wrap {
-    width: 100%;
-    display: none;
+  width: 100%;
+  display: none;
 }
 
 @keyframes swiper {
-    0% {
-        transform: translate(100%, 0);
-    }
+  0% {
+    transform: translate(100%, 0);
+  }
 }
 
 @keyframes swiperLeft {
-    0% {
-        transform: translate(100%, 0);
-    }
+  0% {
+    transform: translate(100%, 0);
+  }
 }
 
 @keyframes swiperRight {
-    0% {
-        transform: translate(-100%, 0);
-    }
+  0% {
+    transform: translate(-100%, 0);
+  }
 }
 
 .active {
-    display: block;
+  display: block;
 }
 
 .active.right,
 .active.left {
-    position: absolute;
-    left: 0;
-    top: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .swp-img-wrap.left {
-    margin-left: -100%;
-    animation: swiperLeft .6s ease-in-out;
+  margin-left: -100%;
+  animation: swiperLeft .6s ease-in-out;
 }
 
 .swp-img-wrap.right {
-    margin-left: 100%;
-    animation: swiperRight .6s ease-in-out;
+  margin-left: 100%;
+  animation: swiperRight .6s ease-in-out;
 }
 
 .next.right {
-    display: block;
-    position: relative;
-    left: -100%;
+  display: block;
+  position: relative;
+  left: -100%;
 }
 
 .next.left {
-    display: block;
-    position: relative;
-    left: 100%;
+  display: block;
+  position: relative;
+  left: 100%;
 }
 
 .swiper .swp-p-container img {
-    width: 100%;
-    height: 270px;
-    background-color: hsla(0, 1%, 71%, 0.2);
-    display: block;
+  width: 100%;
+  height: 270px;
+  background-color: hsla(0, 1%, 71%, 0.2);
+  display: block;
 }
 
 .swp-contorl {
-    width: 80%;
-    left: 10%;
-    text-align: center;
-    position: absolute;
-    bottom: 18px;
-    z-index: 5;
+  width: 80%;
+  left: 10%;
+  text-align: center;
+  position: absolute;
+  bottom: 18px;
+  z-index: 5;
 }
 
 .swp-contorl-cell {
-    display: inline-block;
-    width: 25px;
-    height: 2px;
-    background-color: rgba(0, 0, 0, .3);
-    margin-left: 10px;
+  display: inline-block;
+  width: 25px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, .3);
+  margin-left: 10px;
 }
 
 .swp-contorl-cell:first-child {
-    margin-left: 0px;
+  margin-left: 0px;
 }
 
 .swp-contorl-cell.active {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .swp-bt {
-    background-color: rgba(0, 0, 0, .4);
-    height: 50px;
-    line-height: 50px;
-    width: 40px;
-    top: 40%;
-    position: absolute;
-    font-size: 20px;
-    color: #fff;
-    text-align: center;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
-    cursor: pointer;
-    display: none;
+  background-color: rgba(0, 0, 0, .4);
+  height: 50px;
+  line-height: 50px;
+  width: 40px;
+  top: 40%;
+  position: absolute;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+  cursor: pointer;
+  display: none;
 }
 
 .swiper:hover .swp-bt {
-    display: block;
+  display: block;
 }
 
 .swp-bt-l {
-    left: 0;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
+  left: 0;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .swp-bt-r {
-    right: 0;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
+  right: 0;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
 </style>

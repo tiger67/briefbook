@@ -1,8 +1,5 @@
 export default {
-  issigned: false,
+  isSignIned: false,
   hasEdit: false,
-  lists: [
-    { name: 'sdsds' },
-    { name: "999" }
-  ]
+
 }

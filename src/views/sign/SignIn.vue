@@ -10,7 +10,7 @@
       <div class="input-box">
         <input type="text" placeholder="设置密码" v-model="password">
         <input type="text" name="password" hidden>
-        <i class="iconfont ic-user"></i>
+        <i class="iconfont ic-password"></i>
         <div class="error-tip"></div>
       </div>
       <div class="submit-box">
@@ -40,13 +40,15 @@
   </div>
 </template>
 <script>
+import data from "data";
 export default {
   data() {
     return {
       issign: true,
       nickname: "",
       password: "",
-      telephone: ''
+      telephone: '',
+      sign: data
     }
   },
   methods: {
@@ -54,7 +56,14 @@ export default {
       this.issign = !this.issign;
     },
     submit: function() {
-
+      this.sign.isSignIned = true;
+      if (this.$route.name == "sign_in") {
+        this.$router.push('/');
+      } else {
+        //this.$parent.$parent.close();
+        this.$parent.$parent.$parent.toggle(false);
+        //console.log()
+      }
     }
   }
 }

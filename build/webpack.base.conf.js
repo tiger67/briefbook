@@ -35,6 +35,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'data': resolve('src/data.js'),
       'scss_vars': '@/styles/vars.scss'
     }
   },
@@ -55,7 +56,8 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          //limit: 10000,
+          limit: 10,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
