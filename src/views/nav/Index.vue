@@ -7,7 +7,7 @@
         </router-link>
         <span class="nav-user" v-if="c.isSignIned">
         <router-link class="user-logo-wrap" to="/404">
-          <img src="@/assets/home/nav/user-logo.jpg" alt="用户标识">
+          <img src="@/assets/home/nav/default-user-logo.jpg" alt="用户标识">
         </router-link>
         <user-sub-nav class="user-sub-nav" />
         </span>
