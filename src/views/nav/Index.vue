@@ -27,10 +27,6 @@
           <i class="iconfont ic-navigation-mode"></i>
         </router-link>
       </div>
-      <div style="position:absolute;right:380px;top:20px;font-size:16px;display:none;">
-        <router-link to="/sign_in">登录</router-link>
-        <router-link to="/sign_up">注册</router-link>
-      </div>
       <transition name="fade" mode="out-in">
         <pop-sign v-if="signshow" @close="toggle(false)" @swichsignup="swichsignup" :issignup="issignup">
         </pop-sign>
