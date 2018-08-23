@@ -54,7 +54,7 @@
               <router-link to="/news" class="notification-btn">
                 <i class="iconfont ic-navigation-notification menu-icon"></i>
                 <span class="menu-text">消息</span>
-                <span class="badge">1</span>
+                <span class="badge">2</span>
                 <sub-nav class='sub-nav'></sub-nav>
               </router-link>
             </li>

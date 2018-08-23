@@ -20,14 +20,21 @@ export default {
 </script>
 <style>
 .pop-mask {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, .3);
-    text-align: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, .3);
+  text-align: center;
+}
+
+.pop-mask:before {
+  display: inline-block;
+  content: '';
+  height: 85%;
+  vertical-align: middle;
 }
 
 </style>

@@ -1,18 +1,19 @@
 <template>
   <div class="sign-pg">
     <router-link to="/" class="logo"><img src="../../assets/logo.png"></router-link>
-    <section class="sign-panel">
+    <div class="sign-panel">
       <header>
         <router-link to="/sign_in">登录</router-link>
+        <b>·</b>
         <router-link to="/sign_up">注册</router-link>
       </header>
       <router-view></router-view>
-    </section>
+    </div>
   </div>
 </template>
 <script>
+import "./asign-page.css";
 import "./asign-form.css";
-import "./asign-form-detail.css";
 export default {
   data() {
     return {

@@ -1,13 +1,14 @@
 <template>
   <pop-mask @close="$emit('close')">
-    <section class="sign-panel">
+    <div class="sign-panel">
       <header>
         <a href="#" :class="{'router-link-exact-active':!issignup}" @click.prevent="$emit('swichsignup',false)">登录</a>
+        <b>·</b>
         <a href="#" :class="{'router-link-exact-active':issignup}" @click.prevent="$emit('swichsignup',true)">注册</a>
       </header>
       <sign-in v-show="!issignup" />
       <sign-up v-show="issignup" />
-    </section>
+    </div>
   </pop-mask>
 </template>
 <script>
