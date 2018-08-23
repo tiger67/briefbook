@@ -5,6 +5,7 @@ import SignUp from '@/views/sign/SignUp'
 import Sign from '@/views/sign/Sign'
 import Writer from '@/views/writer'
 import Index from '@/views/index'
+import RecommendWriter from '@/views/recommend-writer'
 
 let routes = [{
     path: '/',
@@ -35,7 +36,15 @@ let routes = [{
     path: '/writer',
     name: 'Writer',
     component: Writer
+  }, {
+    path: '/recommendations',
+    component: Home,
+    children: [{
+      path: '',
+      name: 'recommendwriter',
+      component: RecommendWriter
+    }]
   }
-];
+]
 
 export default routes;

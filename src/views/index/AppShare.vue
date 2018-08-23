@@ -1,18 +1,34 @@
 <template>
-  <div class="app-share-box">
-    <router-link to="/app-download">
-      <img src="../../assets/home/code/td-code.png" class="td-code">
-      <div class='app-share-text'>
-        <h4 class='title'>下载简书手机App<i class="iconfont ic-link"></i></h4>
-        <div class="desc">随时随地发现和创作内容</div>
-      </div>
-    </router-link>
-    <div class="pop-prcode">
-      <img class="qrcode" src="../../assets/home/code/td-code.png" />
+  <router-link to="/app-download" class="app-share-box">
+    <img src="@/assets/home/code/td-code.png" class="td-code">
+    <div class='app-share-text'>
+      <div class='title'>下载简书手机App<i class="iconfont ic-link"></i></div>
+      <div class="desc">随时随地发现和创作内容</div>
     </div>
-  </div>
+    <div class="pop-prcode">
+      <img class="qrcode" src="@/assets/home/code/td-code.png" />
+    </div>
+  </router-link>
 </template>
 <style>
+.app-share-box {
+  display: block;
+  margin-bottom: 30px;
+  padding: 10px 22px;
+  width: 100%;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  background-color: #fff;
+  position: relative;
+}
+
+.td-code {
+  width: 60px;
+  height: 60px;
+  opacity: .85;
+  vertical-align: middle;
+}
+
 .pop-prcode {
   position: absolute;
   top: -193px;
@@ -25,7 +41,7 @@
   display: none;
 }
 
-.app-share-box:hover .pop-prcode {
+.app-share-box:hover>.pop-prcode {
   display: block
 }
 
@@ -71,7 +87,6 @@
 
 .app-share-text>.title {
   font-size: 15px;
-  font-weight: 500;
   color: #333;
 }
 
@@ -79,23 +94,6 @@
   display: inline-block;
   vertical-align: middle;
   margin-left: 7px;
-}
-
-.app-share-box {
-  margin-bottom: 30px;
-  padding: 10px 22px;
-  width: 100%;
-  border: 1px solid #f0f0f0;
-  border-radius: 6px;
-  background-color: #fff;
-  position: relative;
-}
-
-.td-code {
-  width: 60px;
-  height: 60px;
-  opacity: .85;
-  vertical-align: middle;
 }
 
 </style>
