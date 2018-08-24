@@ -106,22 +106,22 @@
   color: #969696;
 }
 
-.follow-btn {
+.cmd-author-line .follow-btn {
   float: right;
   margin-top: 5px;
   padding: 0;
   font-size: 13px;
 }
 
-.follow {
+.cmd-author-line .follow {
   color: #42c02e;
 }
 
-.hasfollow {
+.cmd-author-line .hasfollow {
   color: #969696;
 }
 
-.avatar {
+.cmd-author-line .avatar {
   float: left;
   width: 48px;
   height: 48px;
@@ -130,7 +130,7 @@
   cursor: pointer;
 }
 
-.avatar>img {
+.cmd-author-line .avatar>img {
   width: 100%;
   height: 100%;
   border: 1px solid #ddd;

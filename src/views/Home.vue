@@ -10,14 +10,16 @@
 </template>
 <style>
 .main {
-    padding-top: 56px;
+  padding-top: 56px;
 }
 
+
+/* 
 .main>.container {
     border: 0px solid red;
     min-height: 1000px;
     border-radius: 5px;
-}
+} */
 
 </style>
 <script>
