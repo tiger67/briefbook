@@ -4,27 +4,87 @@
       <router-link to="/">回首页</router-link>
     </div>
     <div class="folder-create">
-      <a class="folder-c-btn" @click.prevent.stop="isCreateFoldering=true">
+      <a class="folder-c-btn" @click.prevent.stop="iscreating=true">
           <i class="fa fa-plus"></i>
           新建文集
       </a>
-      <form class="folder-from" :class='{open:isCreateFoldering}'>
+      <form class="folder-from" :class='{open:iscreating}'>
         <input type="text" class='folder-name' name="foldername" v-model='foldername'>
         <button class='f-btn  f-submit-btn' @click.prevent.stop="createFolder">提 交</button>
-        <button class='f-btn f-cancel-btn' @click.prevent.stop="isCreateFoldering=false">取 消</button>
+        <button class='f-btn f-cancel-btn' @click.prevent.stop="iscreating=false">取 消</button>
       </form>
     </div>
-    <ul class="folder-lists">
-      <li class='folder-line ' v-for="(f,i) in data.files" :title='f.name' :class="{active:i==1}">
+    <div class="folder-lists">
+      <router-link class='folder-line' v-for="(f,i) in data&&data.files" :to="{path:`/writer/notebooks/${f.id}/notes/${f.notes[0].id}`}" :key="i" :title='f.name'>
         <span>{{f.name}}</span>
-      </li>
-    </ul>
-    <div class='config-set-panel'></div>
+      </router-link>
+    </div>
+    <div class='config-set-panel'>
+    </div>
     <div class="problem-btn"></div>
   </div>
 </template>
+<script>
+import { getId } from './utils'
+import data from './data';
+export default {
+  data() {
+    return {
+      data: null,
+      foldername: '',
+      iscreating: false
+    }
+  },
+  mounted: function() {
+    setTimeout(() => {
+      this.data = data;
+      this.$router.push(`/writer/notebooks/${this.data.files[0].id}`);
+    }, 300)
+  },
+  methods: {
+    createFolder(name) {
+      let defaulTitle = new Date().toLocaleDateString().replace(/\//g, '-');
+      let bookId = getId();
+      let noteId = getId();
+      let localholder = {
+        id: bookId,
+        name: this.foldername,
+        notes: [{
+          id: noteId,
+          createTime: new Date(),
+          title: defaulTitle,
+          ispublishing: false,
+          issubmited: false,
+          words: 0
+        }]
+      }
+      this.iscreating = false;
+      let d = this.data;
+      setTimeout(() => {
+        d.files.unshift(localholder);
+        this.foldername = '';
+        d.index = 0;
+        this.$router.push(`/writer/notebooks/${bookId}/notes/${noteId}`)
+      }, 300);
+
+    },
+    /* selectBook(i) { let d = this.data; d.index = i; let b = d.files[i]; b.notes.length > 0 ? this.$router.push(`/writer/notebooks/${b.id}/notes/${b.notes[0].id}`) : this.$router.push(`/writer/notebooks/${b.id}`); }
+     */
+  },
+  watch: {
+    '$route': function(to, from) {
+      /* if (to !== from) { this.data.files.forEach(function(book, i) { if (book.id == to.params.book_id) { this.index = i; } }) }
+       */
+
+    }
+  }
+
+
+}
+
+</script>
 <style>
-.folder-line.active {
+.folder-line.router-link-active {
     background-color: #666;
     border-left: 3px solid #ec7259;
     padding-left: 12px;
@@ -40,6 +100,7 @@
 }
 
 .folder-line {
+    display: block;
     position: relative;
     line-height: 40px;
     list-style: none;
@@ -178,28 +239,13 @@ input.folder-name {
     border-color: #ec7259;
 }
 
-</style>
-<script>
-import localdata from './data';
-export default {
-  data() {
-    return {
-      data: localdata,
-      foldername: '',
-      isCreateFoldering: false
-    }
-  },
-  methods: {
-    createFolder(name) {
-      let localholder = {
-        name: this.foldername,
-        filesLists: []
-      }
-      this.data.files.push(localholder);
-      this.foldername = '';
-
-    }
-  }
+.folder-b-p {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #404040;
+    color: #f2f2f2;
+    z-index: 100;
 }
 
-</script>
+</style>

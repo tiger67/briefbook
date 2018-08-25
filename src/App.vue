@@ -11,18 +11,18 @@ export default {
 </script>
 <style>
 .app-container {
-  border: 1px solid red;
-  height: 100%;
+    border: 1px solid red;
+    height: 100%;
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all .2s ease;
+    /* transition: all .2s ease; */
 }
 
 .fade-enter,
 .fade-leave-active {
-  opacity: 0;
+    /*  opacity: 0; */
 }
 
 </style>

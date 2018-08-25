@@ -4,28 +4,18 @@
     <router-view class="ae-r-r"></router-view>
   </div>
 </template>
-<style>
-
-
-</style>
 <script>
 import Catalog from "./Catalog.vue"
+import data from './data'
 export default {
   data() {
     return {
-
+      ...data
     }
   },
   components: {
     Catalog
   },
-  watch: {
-    '$route': function(to, from) {
-      console.log(to);
-
-    }
-  }
-
 
 }
 

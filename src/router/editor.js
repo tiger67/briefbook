@@ -10,9 +10,13 @@ export default [{
   path: '/writer',
   component: Editor,
   children: [{
-    path: 'notebooks/:notebook_id',
+    path: 'notebooks/:book_id',
     component: Notes,
     children: [{
+      path: '',
+      name: 'notes-gg',
+      component: EditPanel
+    }, {
       path: 'notes/:note_id',
       name: 'notes',
       component: EditPanel
