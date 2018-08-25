@@ -1,11 +1,10 @@
 <template>
-  <div class="author-editor">
+  <div class="notebook-p">
     <div class="editor-layout">
-      <folder-builder-panel class="ae-l " />
-      <div class="ae-r">
-        <article-builder-panel class="ae-r-l" />
-        <edit-panel class="ae-r-r" />
-      </div>
+      <note-books class="ae-l " />
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
   </div>
 </template>
@@ -16,7 +15,9 @@ body {
     height: 100%;
 }
 
-* {
+*,
+:before,
+:after {
     box-sizing: border-box;
 }
 
@@ -29,7 +30,15 @@ body {
     background-color: #fff;
 }
 
-.author-editor {
+a {
+    background-color: transparent;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    transition: color .3s;
+}
+
+.notebook-p {
     width: 100%;
     height: 100%;
     max-width: 100vw;
@@ -41,31 +50,30 @@ body {
     overflow: hidden;
 }
 
-.ae-l {
+.notebook-p .ae-l {
     width: 16.66666667%;
     float: left;
     height: 100%;
 }
 
-.ae-r {
+.notebook-p .ae-r {
     height: 100%;
     float: left;
     width: 83.33333333%;
 }
 
-.ae-r-l {
+.notebook-p .ae-r-l {
     width: 30%;
     height: 100%;
     border-right: 1px solid #d9d9d9;
     float: left;
 }
 
-.ae-r-r {
+.notebook-p .ae-r-r {
     position: relative;
     width: 70%;
     height: 100%;
     float: left;
-
     height: 100vh;
     padding-top: 0;
     background-color: #f2f2f2;
@@ -73,20 +81,31 @@ body {
 }
 
 </style>
+<style>
+.notebook-p input,
+.notebook-p button {
+    outline: none;
+    margin: 0;
+}
+
+</style>
 <script>
-import FolderBuilderPanel from "./FolderBuilderPanel.vue"
-import ArticleBuilderPanel from "./ArticleBuilderPanel.vue"
-import EditPanel from "./EditPanel.vue"
+import '@/assets/font-awesome-4.7.0/css/font-awesome.css'
+import NoteBooks from "./NoteBooks.vue"
+/*import Notes from "./Notes.vue" import EditPanel from "./EditPanel.vue"
+ */
+import data from "./data.js"
 export default {
-  components: {
-    FolderBuilderPanel,
-    ArticleBuilderPanel,
-    EditPanel
-  },
   data() {
     return {
 
     }
+  },
+  components: {
+    NoteBooks,
+  },
+  mounted: function() {
+
   }
 
 }

@@ -10,23 +10,17 @@
 </template>
 <style>
 .main {
-  padding-top: 56px;
+    padding-top: 56px;
 }
 
-
-/* 
 .main>.container {
     border: 0px solid red;
-    min-height: 1000px;
-    border-radius: 5px;
-} */
+}
 
 </style>
 <script>
-import '@/styles/common.css'
-import '@/styles/public.css'
-import '@/styles/layout.css'
 import '@/styles/fonts.css'
+import '@/styles/common.css'
 import Nav from "./nav/Index.vue"
 import cdata from '../data'
 export default {

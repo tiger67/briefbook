@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <h1>这是catalog</h1>
+  </div>
 </template>
 <style>
 

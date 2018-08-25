@@ -3,11 +3,12 @@ import Router from 'vue-router'
 import NotFound from '@/views/404'
 import r1 from "./r1"
 import r2 from "./r2"
+import editor from "./editor"
 import Fonts from "@/views/Fonts"
 
 Vue.use(Router);
 
-let r = r1.concat(r2).concat([{
+let r = r1.concat(r2).concat(editor).concat([{
     path: '/font',
     name: 'Fonts',
     component: Fonts

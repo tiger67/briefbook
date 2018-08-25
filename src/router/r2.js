@@ -2,7 +2,7 @@ import Home from '@/views/Home'
 import Follow from '@/views/follow'
 import News from '@/views/news'
 
-let routes = [{
+export default [{
   path: '/follow',
   component: Home,
   children: [{
@@ -19,5 +19,3 @@ let routes = [{
     component: News
   }]
 }];
-
-export default routes;

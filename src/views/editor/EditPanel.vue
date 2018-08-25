@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <h1>uuuuuuuuuuuuuuu</h1>
+  </div>
 </template>
 <style>
 
@@ -9,6 +11,7 @@
 export default {
   data() {
     return {
+
 
     }
   }
