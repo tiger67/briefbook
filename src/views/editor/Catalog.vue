@@ -4,7 +4,7 @@
  	<i class='fa fa-plus-circle'></i>新建文章
  </a>
     <ul class='file-lists'>
-      <li class="file-lists-line" v-for="(n,i) in book&&book.notes" :key="i" :class="{active:index==i}" @click="select(i)">
+      <li class="file-lists-line" v-for="(n,i) in notes" :key="i" :class="{active:index==i}" @click="select(i)">
         <i class="file-icon"></i>
         <div class="set-btn"></div>
         <span class="title">{{n.title}}</span>
@@ -23,35 +23,51 @@ import cdata from "./data"
 export default {
   data() {
     return {
-      book: null,
+      notes: [],
       index: 0
     }
   },
   methods: {
     select: function(i) {
+      this.index = i;
 
     }
   },
   mounted: function() {
-    this.book = cdata.files[cdata.index];
+    setTimeout(() => {
+      let params = this.$route.params;
+      console.log(this.$route);
+      console.log(this.$router);
+      if (!params.note_id) {
+
+
+      }
+    }, 300)
   },
-  /* beforeRouteUpdate: function(to, from, next) { console.log(to.param.book_id); },
-   */
+
   watch: {
     '$route': function(to, from) {
+      //console.log(to)
+      //return;
       if (to !== from) {
-        console.log(to.params.book_id)
-        cdata.files.forEach(function(file) {
-          if (file && file.id === to.params.book_id) {
-
-            this.book = file;
+        if (to.params.note_id) {
+          //console.log("0000000000000000")
+          return;
+        }
+        let i = 0;
+        for (; i < cdata.files.length; i++) {
+          let file = cdata.files[i];
+          if (file.id == to.params.book_id) {
+            this.notes = file.notes;
+            if (file.notes.length > 0) {
+              let url = to.fullPath + "/notes/" + file.notes[0].id;
+              this.$router.push(url)
+            }
           }
-        })
+        }
       }
-
     }
   }
-
 }
 
 </script>

@@ -3,6 +3,7 @@ const ID1 = getId();
 const ID2 = getId();
 const ID3 = getId();
 const ID4 = getId();
+const ID5 = getId();
 let files = [{
     name: "日记本",
     id: ID1,
@@ -28,9 +29,9 @@ let files = [{
       words: 0,
       content: ""
     }, {
-      id: getId(),
+      id: ID5,
       createTime: "",
-      title: title + 3,
+      title: title,
       ispublishing: false,
       issubmited: false,
       words: 0,

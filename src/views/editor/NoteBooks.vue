@@ -15,7 +15,7 @@
       </form>
     </div>
     <div class="folder-lists">
-      <router-link class='folder-line' v-for="(f,i) in data&&data.files" :to="{path:`/writer/notebooks/${f.id}/notes/${f.notes[0].id}`}" :key="i" :title='f.name'>
+      <router-link class='folder-line' v-for="(f,i) in data&&data.files" :to="{path:`/writer/notebooks/${f.id}`}" :key="i" :title='f.name'>
         <span>{{f.name}}</span>
       </router-link>
     </div>
@@ -38,7 +38,11 @@ export default {
   mounted: function() {
     setTimeout(() => {
       this.data = data;
-      this.$router.push(`/writer/notebooks/${this.data.files[0].id}`);
+      // if(this.route.)
+      console.log(this.$route);
+      if (!this.$route.params.book_id) {
+        this.$router.push(`/writer/notebooks/${this.data.files[0].id}`);
+      }
     }, 300)
   },
   methods: {
@@ -88,6 +92,10 @@ export default {
     background-color: #666;
     border-left: 3px solid #ec7259;
     padding-left: 12px;
+}
+
+.folder-line:hover {
+    background-color: #666;
 }
 
 .folder-line>span {
