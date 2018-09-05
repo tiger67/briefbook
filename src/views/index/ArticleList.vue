@@ -22,57 +22,56 @@
 </template>
 <style>
 .atc-unit {
-    position: relative;
-    width: 100%;
-    margin: 0 0 15px;
-    padding: 15px 2px 20px 0;
-    border-bottom: 1px solid #f0f0f0;
-    word-wrap: break-word;
+  position: relative;
+  width: 100%;
+  margin: 0 0 15px;
+  padding: 15px 2px 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+  word-wrap: break-word;
 }
 
-
 .atc-unit>.img-wrap {
-    position: absolute;
-    top: 50%;
-    margin-top: -60px;
-    right: 0;
-    width: 125px;
-    height: 100px;
+  position: absolute;
+  top: 50%;
+  margin-top: -60px;
+  right: 0;
+  width: 125px;
+  height: 100px;
 }
 
 .img-wrap>img {
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    border: 1px solid #f0f0f0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  border: 1px solid #f0f0f0;
 }
 
 .hasimg>.atc-unit-c {
-    margin-right: 140px;
+  margin-right: 140px;
 }
 
 .atc-unit-c>.title {
-    margin: -7px 0 4px;
-    display: inherit;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.5;
+  margin: -7px 0 4px;
+  display: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .atc-unit-c>.title:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .atc-unit-c>.abstract {
-    margin: 0 0 8px;
-    font-size: 13px;
-    line-height: 24px;
-    color: #999;
+  margin: 0 0 8px;
+  font-size: 13px;
+  line-height: 24px;
+  color: #999;
 }
 
 .atc-unit-c>.meta>a {
-    margin-right: 10px;
-    color: #b4b4b4;
+  margin-right: 10px;
+  color: #b4b4b4;
 }
 
 </style>

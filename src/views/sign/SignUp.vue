@@ -2,18 +2,18 @@
   <div class="sign-form">
     <form>
       <div class="input-box bb-none">
-        <input type="text" placeholder="你的昵称" v-model="nickname">
+        <input type="text" placeholder="手机号" v-model="nickname">
         <input type="text" name="name" hidden>
         <i class="iconfont ic-user"></i>
         <div class="error-tip"></div>
       </div>
       <div class="input-box bb-none">
-        <input type="text" placeholder="手机号" v-model="telephone">
+        <input type="text" placeholder="设置密码" v-model="telephone">
         <i class="iconfont ic-phonenumber"></i>
         <div class="error-tip"></div>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="设置密码" v-model="password">
+        <input type="text" placeholder="短信验证码" v-model="password">
         <input type="text" name="password" hidden>
         <i class="iconfont ic-password"></i>
         <div class="error-tip"></div>

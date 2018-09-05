@@ -2,7 +2,7 @@
   <div class="sign-form sign-in">
     <form>
       <div class="input-box bb-none">
-        <input type="text" placeholder="手机号或密码" v-model="nickname">
+        <input type="text" placeholder="手机号/邮箱" v-model="nickname">
         <input type="text" name="name" hidden>
         <i class="iconfont ic-user"></i>
         <div class="error-tip"></div>
@@ -17,7 +17,7 @@
         <input type="checkbox" name="remember_me" id="remember_me">
         <label for="remember_me">记住我</label>
       </div>
-      <router-link to="/sd" class="problem">登录遇到问题</router-link>
+      <router-link to="/sd" class="problem">忘记密码</router-link>
       <div class="submit-box">
         <input type="submit" @click.prevent="submit" value="登录">
       </div>
