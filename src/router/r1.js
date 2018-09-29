@@ -1,9 +1,9 @@
 import HelloWorld from '@/views/components/HelloWorld'
 import Home from '@/views/Home'
-import SignIn from '@/views/sign/SignIn'
-import SignUp from '@/views/sign/SignUp'
+import SignIn from '@/views/sign/sign-in'
+import SignUp from '@/views/sign/sign-up'
+import ForgetPassword from '@/views/sign/forget-password'
 import Sign from '@/views/sign/Sign'
-
 import Index from '@/views/index'
 import RecommendWriter from '@/views/recommend-writer'
 
@@ -30,6 +30,14 @@ export default [{
       path: '',
       name: 'signUp',
       component: SignUp
+    }]
+  }, {
+    path: '/forget_password',
+    component: Sign,
+    children: [{
+      path: '',
+      name: 'ForgetPassword',
+      component: ForgetPassword
     }]
   },
   {

@@ -8,14 +8,17 @@
     </div>
   </div>
 </template>
-<style>
+<style lang="scss">
 .main {
     padding-top: 56px;
+    .container {
+        border: 0px solid red;
+    }
 }
 
-.main>.container {
-    border: 0px solid red;
-}
+
+@import "@/views/sign/asign-page.scss";
+@import "@/views/sign/asign-form.scss";
 
 </style>
 <script>

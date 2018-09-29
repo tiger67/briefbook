@@ -1,19 +1,19 @@
 <template>
-  <div class="sign-form">
+  <div class="sign-form sign-up">
     <form>
-      <div class="input-box bb-none">
-        <input type="text" placeholder="手机号" v-model="nickname">
+      <div class="input-box">
+        <input type="text" placeholder="你的昵称" v-model="nickname">
         <input type="text" name="name" hidden>
         <i class="iconfont ic-user"></i>
         <div class="error-tip"></div>
       </div>
-      <div class="input-box bb-none">
-        <input type="text" placeholder="设置密码" v-model="telephone">
+      <div class="input-box">
+        <input type="text" placeholder="手机号" v-model="telephone">
         <i class="iconfont ic-phonenumber"></i>
         <div class="error-tip"></div>
       </div>
-      <div class="input-box">
-        <input type="text" placeholder="短信验证码" v-model="password">
+      <div class="input-box last">
+        <input type="text" placeholder="设置密码" v-model="password">
         <input type="text" name="password" hidden>
         <i class="iconfont ic-password"></i>
         <div class="error-tip"></div>
@@ -46,18 +46,19 @@
   </div>
   </div>
 </template>
-<style>
-.msg-box {
-  margin: 10px 0;
-  padding: 0;
-  text-align: center;
-  font-size: 12px;
-  line-height: 20px;
-  color: #969696;
-}
-
-.msg-box>a {
-  color: #3194d0;
+<style lang="scss">
+.sign-up {
+  .msg-box {
+    margin: 10px 0;
+    padding: 0;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+    color: #969696;
+    a {
+      color: #3194d0;
+    }
+  }
 }
 
 </style>

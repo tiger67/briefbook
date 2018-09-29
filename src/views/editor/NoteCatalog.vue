@@ -1,70 +1,71 @@
 <template>
   <div class="catalog-p">
-    <a @click.prevent="" class='file-create-btn'>
- 	<i class='fa fa-plus-circle'></i>新建文章
+    <a @click.prevent="createNote(0)" class='file-create-btn'>
+  <i class='fa fa-plus-circle'></i> 新建文章
  </a>
-    <ul class='file-lists'>
-      <li class="file-lists-line" v-for="(n,i) in notes" :key="i" :class="{active:index==i}" @click="select(i)">
+    <div class='file-lists'>
+      <a class="file-lists-line" v-for="n in notes" :key="n.id" :class="{'active':$route.params.note_id==n.id}" @click.prevent="openNote(n)">
         <i class="file-icon"></i>
         <div class="set-btn"></div>
         <span class="title">{{n.title}}</span>
         <span class="sub-title">{{n.sub_title}}</span>
         <span class="tip-msg">字数：{{n.words}}</span>
-      </li>
-    </ul>
-    <a @click.prevent="" class="file-create-btn-b">
-    	<i class="fa fa-plus"></i>
-    	在下方创建文章
+      </a>
+    </div>
+    <a @click.prevent="createNote(-1)" class="file-create-btn-b">
+      <i class="fa fa-plus"></i>
+      在下方创建文章
     </a>
   </div>
 </template>
 <script>
 import cdata from "./data"
+import api from "./api"
 export default {
   data() {
     return {
-      notes: [],
-      index: 0
+      notes: []
     }
   },
   methods: {
-    select: function(i) {
-      this.index = i;
-
+    openNote(note) {
+      var bookId = this.$route.params.book_id;
+      this.$router.push(`/writer/notebooks/${bookId}/notes/${note.id}`);
+    },
+    findNotes(bookId, index) {
+      api.findNotes({ bookId }).then(res => {
+        if (res.code === 0) {
+          /*  if (res.data.length > 0) {*/
+          this.notes = res.data;
+          if (res.data.length > 1 && index == -1) {
+            this.openNote(res.data.slice(-1)[0]);
+          } else {
+            this.openNote(res.data[0])
+          }
+          /*} else {
+            this.notes = res.data;
+          }*/
+        }
+      })
+    },
+    createNote(index) {
+      // console.log()
+      var bookId = this.$route.params.book_id;
+      api.createNote({ bookId, index }).then(res => {
+        console.log(res);
+        if (res.code == 0) {
+          this.findNotes(bookId, index);
+        }
+      })
     }
   },
-  mounted: function() {
-    setTimeout(() => {
-      let params = this.$route.params;
-      console.log(this.$route);
-      console.log(this.$router);
-      if (!params.note_id) {
-
-
-      }
-    }, 300)
-  },
-
+  mounted: function() {},
   watch: {
     '$route': function(to, from) {
-      //console.log(to)
-      //return;
-      if (to !== from) {
-        if (to.params.note_id) {
-          //console.log("0000000000000000")
-          return;
-        }
-        let i = 0;
-        for (; i < cdata.files.length; i++) {
-          let file = cdata.files[i];
-          if (file.id == to.params.book_id) {
-            this.notes = file.notes;
-            if (file.notes.length > 0) {
-              let url = to.fullPath + "/notes/" + file.notes[0].id;
-              this.$router.push(url)
-            }
-          }
-        }
+      var to_book_id = to.params && to.params.book_id;
+      var from_book_id = from.params && from.params.book_id;
+      if (to_book_id != from_book_id) {
+        this.findNotes(to_book_id);
       }
     }
   }
@@ -141,6 +142,7 @@ export default {
 }
 
 .file-lists-line {
+    display: block;
     position: relative;
     height: 90px;
     color: #595959;

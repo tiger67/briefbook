@@ -4,7 +4,11 @@ function getId() {
   return ++id;
 }
 
+function getDate() {
+  return new Date().toLocaleDateString().replace(/\//g, '-')
+}
 
-export {
-  getId
+export default {
+  getId,
+  getDate
 }

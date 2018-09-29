@@ -1,13 +1,13 @@
 <template>
   <div class="sign-form sign-in">
     <form>
-      <div class="input-box bb-none">
-        <input type="text" placeholder="手机号/邮箱" v-model="nickname">
+      <div class="input-box">
+        <input type="text" placeholder="手机号或密码" v-model="nickname">
         <input type="text" name="name" hidden>
         <i class="iconfont ic-user"></i>
         <div class="error-tip"></div>
       </div>
-      <div class="input-box">
+      <div class="input-box last">
         <input type="text" placeholder="设置密码" v-model="password">
         <input type="text" name="password" hidden>
         <i class="iconfont ic-password"></i>
@@ -17,7 +17,7 @@
         <input type="checkbox" name="remember_me" id="remember_me">
         <label for="remember_me">记住我</label>
       </div>
-      <router-link to="/sd" class="problem">忘记密码</router-link>
+      <router-link to="/sd" class="problem">登录遇到问题</router-link>
       <div class="submit-box">
         <input type="submit" @click.prevent="submit" value="登录">
       </div>
@@ -50,25 +50,26 @@
   </div>
   </div>
 </template>
-<style>
-.remember {
-  float: left;
-  margin: 15px 0;
-}
-
-.problem {
-  float: right;
-  margin: 15px 0;
-  font-size: 14px;
-  color: #999;
-}
-
-.problem:hover {
-  color: #222;
-}
-
-.sign-in .submit-box>input[type=submit] {
-  background-color: #3194d0;
+<style lang="scss">
+.sign-in {
+  .remember {
+    float: left;
+    margin: 15px 0;
+  }
+  .submit-box {
+    input {
+      background-color: #3194d0;
+    }
+  }
+  .problem {
+    float: right;
+    margin: 15px 0;
+    font-size: 14px;
+    color: #999;
+    &:hover {
+      color: #222;
+    }
+  }
 }
 
 </style>
@@ -81,20 +82,18 @@ export default {
       nickname: "",
       password: "",
       telephone: '',
-      sign: data
+      c: data
     }
   },
   methods: {
-    togglesign: function() {
-      this.issign = !this.issign;
-    },
     submit: function() {
-      this.sign.isSignIned = true;
-      if (this.$route.name == "sign_in") {
+      this.c.isSignIned = true;
+      if (this.$route.name == "SignIn") {
         this.$router.push('/');
       } else {
-        //this.$parent.$parent.close();
-        this.$parent.$parent.$parent.toggle(false);
+        this.c.showPopSign = false;
+        //this.$router.push('/');
+        //this.$parent.$parent.$parent.toggle(false);
       }
     }
   }

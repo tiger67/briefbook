@@ -13,8 +13,8 @@
 </template>
 <script>
 import PopMask from "../components/PopMask"
-import SignIn from "./SignIn"
-import SignUp from "./SignUp"
+import SignIn from "./sign-in"
+import SignUp from "./sign-up"
 export default {
   props: {
     issignup: Boolean,

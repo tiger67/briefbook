@@ -1,0 +1,130 @@
+.editor {
+  position: relative;
+  height: 100vh;
+  padding-top: 20px;
+  text-align: left;
+  .editor-tool-wrap {
+    margin: 0;
+    list-style-type: none;
+    background-color: #d9d9d9;
+    border-bottom: 1px solid #ccc;
+    font-size: 0;
+    .sub-tool {
+      display: none;
+      li {
+        display: inline-block;
+        cursor: pointer;
+        text-align: center;
+        a {
+          outline: none;
+        }
+      }
+    }
+    .send-btn {
+      width: 100px;
+    }
+    .fl {
+      float: left;
+    }
+    .fr {
+      float: right;
+    }
+    .sp-fr {
+      float: right;
+      a {
+        font-size: 13px;
+      }
+    }
+    li {
+
+      display: inline-block;
+      cursor: pointer;
+      text-align: center;
+      position: relative;
+      ul {}
+
+      &:hover {
+        .sub-tool {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 0;
+          margin: 0;
+          z-index: 3;
+          pointer-events: auto;
+          /* opacity: 0; */
+          background-color: #d9d9d9;
+          li {
+            display: block;
+            a {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+    a {
+      color: #595959;
+      padding: 11px 14px;
+      display: inline-block;
+      line-height: 17px;
+      font-size: 16px;
+      &:hover {
+        color: #f2f2f2;
+        background-color: #595959;
+      }
+      &.has-sub:after {
+        display: block;
+        width: 0;
+        height: 0;
+        border: 5px solid #999;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-bottom: 0;
+        content: "";
+        position: absolute;
+        top: 8px;
+        right: 5px;
+      }
+    }
+  }
+  .save-tip {
+    position: absolute;
+    right: 5px;
+    top: 2px;
+  }
+  .title {
+    font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
+    width: 100%;
+    padding: 0 80px 10px 40px;
+    margin-bottom: 0;
+    border: none;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 30px;
+    box-shadow: none;
+    color: #595959;
+    background-color: transparent;
+    outline: none;
+    border-radius: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
+  zoom: 1;
+}

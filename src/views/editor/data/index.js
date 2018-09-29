@@ -1,9 +1,11 @@
-let title = new Date().toLocaleDateString().replace(/\//g, '-');
-const ID1 = getId();
-const ID2 = getId();
-const ID3 = getId();
-const ID4 = getId();
-const ID5 = getId();
+import utils from "../utils"
+let index = 0;
+let title = utils.getDate();
+const ID1 = utils.getId();
+const ID2 = utils.getId();
+const ID3 = utils.getId();
+const ID4 = utils.getId();
+const ID5 = utils.getId();
 let files = [{
     name: "日记本",
     id: ID1,
@@ -39,8 +41,7 @@ let files = [{
     }]
   }
 ];
-let index = 0;
-import { getId } from "./utils"
+
 export default {
   config: {},
   index: index,
