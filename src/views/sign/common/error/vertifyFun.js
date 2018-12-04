@@ -1,6 +1,3 @@
-/*import API from "@/api"
- */
-
 function empty() {
   if (!this.isvertify) {
     return
@@ -110,7 +107,54 @@ function mobile2() {
     }
     if (res.data.code !== 0) {
       this.isvertify = false;
-      this.msg = "手机号未注册";
+      this.msg = res.data.msg;
+      return false;
+    } else {
+      this.isvertify = true;
+      return true;
+    }
+  }
+}
+
+function mobile3() {
+  console.log("running 3333")
+  if (this.isvertify) {
+    var mobile = this.value;
+
+    if (mobile == "15813390000") {
+      var res = {
+        data: {
+          code: -1,
+          msg: "手机号无效"
+        }
+      }
+    } else {
+      var res = {
+        data: {
+          code: 0,
+          msg: "手机号有效"
+        }
+      }
+    }
+    if (res.data.code !== 0) {
+      this.isvertify = false;
+      this.msg = res.data.msg;
+      return false;
+    } else {
+      this.isvertify = true;
+      return true;
+    }
+  }
+}
+
+function mobilefilter() {
+  var del_mobiles = ['15813390659']
+  if (this.isvertify) {
+    var mobile = this.value;
+    //var res = await API["get/api/u/checkMobile"]({ mobile, type: 2 });
+    if (del_mobiles.indexOf(mobile) != -1) {
+      this.isvertify = false;
+      this.msg = "禁止使用此号码"
       return false;
     } else {
       this.isvertify = true;
@@ -125,5 +169,7 @@ export default {
   mobile,
   nickname,
   mobile1,
-  mobile2
+  mobile2,
+  mobile3,
+  mobilefilter
 }

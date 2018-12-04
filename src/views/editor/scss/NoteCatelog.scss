@@ -1,0 +1,104 @@
+.catalog-p {
+  overflow-y: scroll;
+  height: 100%;
+  position: relative;
+  .file-create-btn {
+    display: block;
+    line-height: 20px;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 20px 0 20px 25px;
+    cursor: pointer;
+    color: #595959;
+    i {
+      padding-right: 3px;
+      font-size: 18px;
+      vertical-align: bottom;
+    }
+  }
+  .file-create-btn-b {
+    display: block;
+    line-height: 30px;
+    padding: 20px 0 20px 25px;
+    cursor: pointer;
+    color: #999;
+    margin-bottom: 80px;
+    &:hover {
+      color: #666;
+    }
+  }
+
+  .file-lists {
+    position: relative;
+    margin-bottom: 0;
+    background-color: #efe9d9;
+    border-top: 1px solid #d9d9d9;
+    .file-lists-line {
+      display: block;
+      position: relative;
+      height: 90px;
+      color: #595959;
+      background-color: #fff;
+      margin-bottom: 0;
+      padding: 15px 10px 15px 60px;
+      box-shadow: 0 0 0 1px #d9d9d9;
+      border-left: 5px solid transparent;
+      list-style: none;
+      line-height: 60px;
+      cursor: pointer;
+      user-select: none;
+      &.active {
+        border-left-color: #ec7259;
+        background-color: #e6e6e6;
+        .tip-msg {
+          display: block;
+        }
+      }
+      &:hover {
+        background-color: #e6e6e6;
+      }
+
+      .tip-msg {
+        display: none;
+        position: absolute;
+        bottom: 2px;
+        left: 5px;
+        font-size: 11px;
+        line-height: 16px;
+        color: #595959;
+      }
+
+      .sub-title {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .title {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 18px;
+        color: #333;
+      }
+
+      .file-icon {
+        position: absolute;
+        top: 30px;
+        left: 20px;
+        width: 22px;
+        height: 30px;
+        background: url('../../assets/home/editor/sprite.png') no-repeat 0 -25px;
+        background-size: 250px;
+      }
+    }
+  }
+}

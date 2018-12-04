@@ -1,8 +1,12 @@
-let id = 14242527
 const RETURNTIME = 200;
+if (!localStorage.getItem("id")) {
+  localStorage.setItem("id", 1111478)
+}
 
 function getId() {
-  return ++id;
+  var id = parseInt(JSON.parse(localStorage.getItem("id"))) + 1;
+  localStorage.setItem("id", id);
+  return id;
 }
 
 function getDate() {
@@ -20,9 +24,31 @@ function error(resolve, { data = null, msg = 'error' }) {
     resolve({ code: -1, data, msg });
   }, RETURNTIME);
 }
+
+function storageData(name, data) {
+  try {
+    localStorage.setItem(name, JSON.stringify(data));
+    return true;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+}
+
+function getData(name) {
+  return JSON.parse(localStorage.getItem(name)) || [];
+}
+
+function clearData(name) {
+  localStorage.removeItem(name);
+}
+
 export default {
   getId,
   getDate,
   success,
-  error
+  error,
+  storageData,
+  getData,
+  clearData
 }

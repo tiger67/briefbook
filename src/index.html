@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+  @keyframes widopen {
+      from {
+          width: 100px;
+      }
+      50% {
+          width: 100%;
+      }
+      to {
+          width: 100px;
+      }
+  }
+
+  .contanier {
+      width: 400px;
+      border: 1px solid red;
+  }
+
+  .box {
+      width: 300px;
+      background: rgba(0, 0, 0, .3);
+      height: 20px;
+      margin: 20px 0;
+      animation: widopen 1s infinite;
+  }
+
+  .ease {
+      animation-timing-function: ease;
+  }
+
+  .ease-in {
+      animation-timing-function: ease-in;
+  }
+
+  .ease-out {
+      animation-timing-function: ease-out;
+  }
+
+  .ease-in-out {
+      animation-timing-function: ease-in-out;
+  }
+
+  .linear {
+      animation-timing-function: linear;
+  }
+
+  .fenge {
+      margin-top: 200px;
+  }
+
+  </style>
+</head>
+
+<body>
+  <div class="contanier">
+    <div class="box ease">ease</div>
+    <div class="box ease-in-out">ease-in-out</div>
+    <div class="fenge"></div>
+    <div class="box ease-out">ease-out</div>
+    <div class="box ease-in">ease-in</div>
+    <div class="box linear">linear</div>
+  </div>
+  <script>
+  var g = new Set();
+  g.add(10);
+  g.add("222");
+  g.add("klting");
+  for (var k of g) {
+    console.log(k);
+  }
+  var enters = g.entries();
+  console.log(enters.next().value);
+  console.log(enters.next().value);
+  console.log(enters.next().value);
+  console.log(enters.next().value);
+
+  var str = "sdss";
+  for (var s of str) {
+    console.log(s);
+  }
+  Promise.resolve("Success").then(function(value) {
+    console.log(value); // "Success"
+  }, function(value) {
+    // 不会被调用
+  });
+  Promise.reject("error").then(function(value) {
+    console.log(value); // "Success"
+  }, function(value) {
+    console.log(value);
+  });
+
+  function fib(max) {
+    var
+      t,
+      a = 0,
+      b = 1,
+      arr = [0, 1];
+    while (arr.length < max) {
+      console.log(a, b);
+      [a, b] = [b, a + b];
+
+      arr.push(b);
+    }
+    return arr;
+  }
+  console.dir(fib(5));
+
+  function myfib(max) {
+    var arr = [0, 1];
+    var a = 0,
+      b = 1;
+    max = max - 2;
+    while (max--) {
+      var c = a + b;
+      a = b;
+      b = c;
+      arr.push(b);
+    }
+    console.log(arr);
+  }
+
+  myfib(5);
+
+  var [k, m, x] = ["jss", "whhwhw", { name: 'shhshssh' }];
+
+  console.log(k);
+  console.log(m);
+  console.log(x);
+
+  </script>
+</body>
+
+</html>

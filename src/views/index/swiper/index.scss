@@ -1,0 +1,113 @@
+.swiper {
+  border: 0px solid green;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 35px;
+  @keyframes swiperLeft {
+    0% {
+      transform: translate(100%, 0);
+    }
+  }
+
+  @keyframes swiperRight {
+    0% {
+      transform: translate(-100%, 0);
+    }
+  }
+  &:hover {
+    .swp-bt {
+      display: block;
+    }
+  }
+  .swp-bt {
+    background-color: rgba(0, 0, 0, .4);
+    height: 50px;
+    line-height: 50px;
+    width: 40px;
+    top: 40%;
+    position: absolute;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    cursor: pointer;
+    display: none;
+    &.swp-bt-l {
+      left: 0;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+    &.swp-bt-r {
+      right: 0;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+  }
+}
+
+.swp-p-container {
+  position: relative;
+  img {
+    width: 100%;
+    height: auto;
+    background-color: hsla(0, 1%, 71%, 0.2);
+    display: block;
+  }
+  .swp-img-wrap {
+    width: 100%;
+    display: none;
+    &.left {
+      margin-left: -100%;
+      animation: swiperLeft .6s ease-in-out;
+    }
+
+    &.right {
+      margin-left: 100%;
+      animation: swiperRight .6s ease-in-out;
+    }
+  }
+  .active {
+    display: block;
+    &.right,
+    &.left {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+  .next {
+    &.right {
+      display: block;
+      position: relative;
+      left: -100%;
+    }
+    &.left {
+      display: block;
+      position: relative;
+      left: 100%;
+    }
+  }
+}
+
+.swp-contorl {
+  width: 80%;
+  left: 10%;
+  text-align: center;
+  position: absolute;
+  bottom: 18px;
+  z-index: 5;
+  .swp-contorl-cell {
+    display: inline-block;
+    width: 25px;
+    height: 2px;
+    background-color: rgba(0, 0, 0, .3);
+    margin-left: 10px;
+    &:first-child {
+      margin-left: 0px;
+    }
+    &.active {
+      background-color: #fff;
+    }
+  }
+}

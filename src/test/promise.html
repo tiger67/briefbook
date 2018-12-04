@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>SHDASD</li>
+    <li>SHDASD</li>
+    <li>SHDASD</li>
+    <li>SHDASD</li>
+    <li>SHDASD</li>
+  </ul>
+  <script>
+  setTimeout(function() {
+    console.log('timeout!')
+  }, 0)
+  new Promise(function(resovle, reject) {
+    resovle("666666")
+  }).then(function(str) {
+    setTimeout(function() {
+      console.log(str);
+    }, 0)
+  })
+  new Promise(function(resovle, reject) {
+    resovle("111111")
+  }).then(function(str) {
+    console.log(str);
+  })
+
+  console.log('endding')
+
+  </script>
+</body>
+
+</html>

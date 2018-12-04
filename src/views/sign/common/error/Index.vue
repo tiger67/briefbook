@@ -1,29 +1,43 @@
 <template>
-  <div class="tooltip-wrap">
-    <div class="tooltip-error" v-for="(e,i) in d.errors" :class="{'show':e.show}" :style="`left:${e.pos.left}px;top:${e.pos.top}px;`">
-      <div class="tooltip-arrow tooltip-arrow-border" style="top: 50%;"></div>
-      <div class="tooltip-arrow tooltip-arrow-bg" style="top: 50%;"></div>
-      <div class="tooltip-inner"><i class="iconfont ic-error"></i>{{e.msg}}</div>
+  <div>
+    <slot/>
+    <div class="tooltip-wrap">
+      <div class="tooltip-error" v-for="(e ,i) in errors" :class="{'show':e.show}" :style="`left:${e.pos.left}px;top:${e.pos.top}px;`">
+        <div class="tooltip-arrow tooltip-arrow-border" style="top: 50%;"></div>
+        <div class="tooltip-arrow tooltip-arrow-bg" style="top: 50%;"></div>
+        <div class="tooltip-inner"><i class="iconfont ic-error"></i>{{e.msg}}</div>
+      </div>
     </div>
   </div>
 </template>
 <script>
-import error from "./data"
+import data from "./data"
+
 export default {
   data() {
     return {
-      d: error.data
+      errors: []
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.errors = data.data.els.map(el => {
+        //console.log(el.error);
+        return el.error;
+      })
+
+    }, 1000);
   },
   methods: {
     vertify() {
-      return this.d.errors.every(function(err) {
-        return err.isvertify
+      return
+      this.errors.every(function(error) {
+        return error.isvertify
       })
     }
   },
   destroyed() {
-    error.initData();
+    data.destory();
   }
 }
 

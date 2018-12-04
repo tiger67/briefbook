@@ -1,21 +1,17 @@
 import Home from '@/views/Home'
-import Follow from '@/views/follow'
-import News from '@/views/news'
+const News = resolve => require(['@/views/news'], resolve);
+const Default = resolve => require(['@/views/news/Default'], resolve);
 
 export default [{
-  path: '/follow',
+  path: '',
   component: Home,
   children: [{
-    path: '',
-    name: 'follow',
-    component: Follow
-  }]
-}, {
-  path: '/news',
-  component: Home,
-  children: [{
-    path: '',
-    name: 'news',
-    component: News
+    path: 'news',
+    component: News,
+    children: [{
+      path: '',
+      name: "default",
+      component: Default,
+    }]
   }]
 }];

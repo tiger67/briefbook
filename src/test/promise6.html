@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  var a = new Promise(function(resovle) {
+    setTimeout(function() {
+      resovle("shshsshshsh");
+    }, 3000);
+  });
+
+  console.log(a);
+  a.then(function(res) { console.log(res + '888888888'); });
+
+  var b = new Promise(function(resovle) {
+    resovle("3333")
+  });
+
+  b.then(function(res) { console.log(res + '888888888'); });
+
+  var c = new Promise(function(resovle, reject) {
+    reject("3333")
+  });
+
+  c.then(function(res) { console.log(res); }, function(res) {
+
+  })
+
+  var p1 = Promise.all([a, b, c]);
+
+  p1.then(function(res) {
+    console.log(res);
+  }, function(res) {
+    console.log('------------------p1-reject-------------------');
+    console.log(res);
+  })
+
+  var p2 = Promise.all([a, b, c]);
+  console.dir(p2);
+  p2.then(function(res) {
+    console.log('-----------------p2--resolve-------------------');
+    console.log('222222222222');
+    console.log(res);
+  }, function(res) {
+    console.log('-------------------reject-------------------');
+    console.log(res);
+  })
+
+  </script>
+</body>
+
+</html>

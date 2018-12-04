@@ -1,13 +1,9 @@
-import Editor from '@/views/editor'
-/*import Notes from '@/views/editor/Notes.vue'
-import EditPanel from '@/views/editor/EditPanel.vue'
-*/
+const Editor = resolve => require(['@/views/editor'], resolve);
 
 export default [{
   path: '/writer',
   name: 'writer',
   component: Editor,
-
 }, {
   path: '/writer/notebooks/:book_id',
   name: 'notebooks',

@@ -1,5 +1,5 @@
 <template>
-  <div class="recommend-lists">
+  <div class="recommend-lists" v-once>
     <router-link v-for="com in lists" target="_blank" :key="com.name" to="/404" class="recommend-lists-cl">
       <img :src='com.img'>
       <div class="name">{{com.name}}</div>
@@ -9,38 +9,35 @@
     </router-link>
   </div>
 </template>
-<style>
-.recommend-lists-more {
-  line-height: 32px;
-  color: #787878;
-}
-
+<style lang="scss">
 .recommend-lists {
-  margin-bottom: 20px;
-}
+    margin-bottom: 20px;
+    img {
+        width: 32px;
+        height: 32px;
+        vertical-align: middle;
+        border: 0;
+    }
+    .recommend-lists-cl {
+        display: inline-block;
+        margin: 0 22px 18px 0px;
+        min-height: 32px;
+        background-color: #f7f7f7;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+        vertical-align: top;
+        overflow: hidden;
+        .name {
+            display: inline-block;
+            padding: 0 12px 0 6px;
+            font-size: 14px;
+        }
+    }
 
-.recommend-lists img {
-  width: 32px;
-  height: 32px;
-  vertical-align: middle;
-  border: 0;
-}
-
-.recommend-lists>.recommend-lists-cl {
-  display: inline-block;
-  margin: 0 22px 18px 0px;
-  min-height: 32px;
-  background-color: #f7f7f7;
-  border: 1px solid #dcdcdc;
-  border-radius: 4px;
-  vertical-align: top;
-  overflow: hidden;
-}
-
-.recommend-lists .name {
-  display: inline-block;
-  padding: 0 12px 0 6px;
-  font-size: 14px;
+    .recommend-lists-more {
+        line-height: 32px;
+        color: #787878;
+    }
 }
 
 </style>

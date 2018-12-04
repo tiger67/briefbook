@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  let p = new Promise((resolve, reject) => {
+    resolve();
+    throw "error";
+  });
+
+  p.catch(err => {
+    console.log("catch " + err); // 不会被执行
+  });
+
+  new Promise((resovle, reject) => {
+    resovle("jj");
+    return new Promise((resovle, reject) => {
+      console.log(888888)
+      console.log(111)
+    }).catch(pp => {
+      console.log(pp)
+    })
+  }).then(res => {
+    console.log(res)
+    //console.log(pp)
+    return new Promise((resovle, reject) => {
+      resovle(m + res)
+    })
+  }).catch((e) => {
+    console.log(e)
+  })
+
+  </script>
+</body>
+
+</html>

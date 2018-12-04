@@ -3,12 +3,13 @@ import Router from 'vue-router'
 import NotFound from '@/views/404'
 import r1 from "./r1"
 import r2 from "./r2"
+import test from "./test"
+import follow from "./follow"
 import editor from "./editor"
 import Fonts from "@/views/Fonts"
-
 Vue.use(Router);
 
-let r = r1.concat(r2).concat(editor).concat([{
+let r = r1.concat(r2).concat(test).concat(follow).concat(editor).concat([{
     path: '/font',
     name: 'Fonts',
     component: Fonts
@@ -27,7 +28,8 @@ let r = r1.concat(r2).concat(editor).concat([{
 
 export default new Router({
   routes: r,
-  mode: 'history',
+  /* mode: 'history',
+   */
   scrollBehavior(to, from, savedPosition) {
     /*console.log(to);
 console.log(from);

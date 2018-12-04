@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <script>
+  var range = document.createRange();
+  console.log(range);
+  var newNode = document.createElement("p");
+  newNode.appendChild(document.createTextNode("New Node Inserted Here"));
+  range.selectNode(document.getElementsByTagName("div").item(3));
+  range.insertNode(newNode);
+
+  </script>
+</body>
+
+</html>

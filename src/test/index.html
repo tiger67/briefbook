@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  function* gen() {
+    yield 1;
+    yield 2;
+    yield 3;
+  }
+
+  let g = gen();
+  let ge = g.next();
+  console.log(ge);
+  ge = g.next();
+  console.log(ge);
+  ge = g.next();
+  console.log(ge);
+  ge = g.next();
+  console.log(ge);
+  /* function* idMaker() {
+     let index = 0;
+     while (true)
+       yield index++;
+   }
+
+   let gen = idMaker(); // "Generator { }"
+
+   console.log(gen.next().value);
+   // 0
+   console.log(gen.next().value);
+   // 1
+   console.log(gen.next().value);
+   console.log(gen.next().value);*/
+
+  let gh = 100;
+
+  function run() {
+    console.log(gh);
+  }
+  run();
+
+  function* fblc(max) {
+
+    let arr = [0, 1];
+    while (arr.length < max) {
+      var len = arr.length - 1;
+      arr.push(arr[len] + arr[len - 1])
+    }
+    return arr;
+  }
+
+  console.dir(fblc);
+
+  function show(a, b) {
+
+    console.dir(arguments);
+    //  console.dir(show.caller);
+    return a + b
+  }
+  var gshow = show.bind({ name: 'jwjwj' });
+  //console.dir(gshow.caller);
+  gshow(199, 90)
+
+  var callerTest = function() {
+
+    console.log(callerTest.caller);
+
+  };
+
+  function a() {
+
+    callerTest();
+
+  }
+
+  a(); //输出function a() {callerTest();}
+
+  </script>
+</body>
+
+</html>

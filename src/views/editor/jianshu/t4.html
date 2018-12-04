@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <div contenteditable="true">
+    <p>1dsdsa</p>
+    <p>2sds</p>
+    <p>3dsadas</p>
+    <p>4sdd</p>
+    <p>5dasdas</p>
+  </div>
+  <script>
+  var range = document.createRange();
+  var endNode = document.getElementsByTagName("p").item(1);
+  var endOffset = endNode.childNodes.length;
+  range.setEnd(endNode, endOffset);
+  console.log(range);
+
+  </script>
+</body>
+
+</html>

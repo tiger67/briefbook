@@ -26,28 +26,25 @@ export default {
 }
 
 </script>
-<style>
+<style lang="scss">
 .nav-line {
-  display: block;
-  height: auto;
-  padding: 10px 20px;
-  line-height: 30px;
-}
-
-.nav-line:hover {
-  background-color: #f0f0f0;
-}
-
-.nav-line>i {
-  margin-right: 15px;
-  font-size: 24px;
-  color: #ea6f5a;
-  vertical-align: middle;
-}
-
-.nav-line-text {
-  font-size: 15px;
-  vertical-align: middle;
+    display: block;
+    height: auto;
+    padding: 10px 20px;
+    line-height: 30px;
+    &:hover {
+        background-color: #f0f0f0;
+    }
+    &>i {
+        margin-right: 15px;
+        font-size: 24px;
+        color: #ea6f5a;
+        vertical-align: middle;
+    }
+    .nav-line-text {
+        font-size: 15px;
+        vertical-align: middle;
+    }
 }
 
 </style>

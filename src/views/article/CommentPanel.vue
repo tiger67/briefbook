@@ -5,9 +5,7 @@
         <a href="javascript:void(0)" v-signin class="btn signin-btn">登录</a>
         <span>后发表评论</span>
       </div>
-      <article-reply v-else :atc="atc">
-        <router-link to="/article" class="avatar"> <img :src="atc.photo || atc.avatar" alt="">
-        </router-link>
+      <article-reply v-else>
       </article-reply>
     </div>
     <comment-list :comments="comments" />
@@ -17,12 +15,10 @@
 import c from "data"
 import CommentList from "./CommentList"
 import ArticleReply from "./ArticleReply"
-import api from "./api"
+/*import api from "./api"
+*/
 import data from "./data"
 export default {
-  props: {
-    atc: Object
-  },
   data() {
     return {
       c,
@@ -32,7 +28,7 @@ export default {
   mounted() {
     //this.commentslist();
     var id = this.$route.params.id
-    api.getcomments(id)
+    //api.getcomments(id)
 
   },
   methods: {
@@ -49,35 +45,42 @@ export default {
 </script>
 <style lang="scss">
 .comment-panel-wrap {
-  height: 500px;
-  border: 0px solid red;
-  .post-comment-control {
-    padding-bottom: 40px;
-  }
-  .signin-wrap {
-    height: 80px;
-    margin-bottom: 50px;
-    text-align: center;
-    border: 1px solid #dcdcdc;
-    background-color: #fff;
-    &:before {
-      height: 100%;
-      display: inline-block;
-      content: '';
-      vertical-align: middle;
+    height: 500px;
+    border: 0px solid red;
+    .post-comment-control {
+        padding-bottom: 40px;
     }
-    .signin-btn {
-      display: inline-block;
-      border-radius: 40px;
-      font-size: 16px;
-      padding: 7px 0;
-      width: 100px;
-      vertical-align: middle;
-      margin-right: 10px;
-      color: #fff;
-      background-color: #ffc81f;
+    .signin-wrap {
+        height: 80px;
+        margin-bottom: 50px;
+        text-align: center;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+        background-color: hsla(0, 0%, 71%, .1);
+        &:before {
+            height: 100%;
+            display: inline-block;
+            content: '';
+            vertical-align: middle;
+        }
+        .signin-btn {
+            display: inline-block;
+            outline: none;
+            border-radius: 20px;
+            font-size: 16px;
+            width: 78px;
+            margin: 11px 10px 0 0;
+            padding: 7px 18px;
+            vertical-align: middle;
+            color: #fff;
+            /*  background-color: #ffc81f; */
+            background-color: #3194d0;
+            &+span {
+                font-size: 14px;
+                vertical-align: -7px;
+            }
+        }
     }
-  }
 }
 
 </style>

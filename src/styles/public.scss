@@ -1,0 +1,39 @@
+@media (max-width: 1366px) {
+  .w {
+    width: 960px;
+  }
+}
+
+@media (max-width: 1092px) {
+  .w {
+    width: 750px;
+  }
+}
+
+.w-b {
+  width: 66.66667%;
+}
+
+.w-s {
+
+  width: 29.16667%;
+}
+
+.m0a {
+  margin: 0 auto;
+}
+
+
+
+/* .container {
+  margin-left: -15px;
+  margin-right: -15px;
+} */
+
+.clear {
+  &:after {
+    display: table;
+    content: "";
+    clear: both;
+  }
+}

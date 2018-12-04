@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer v-once>
     <slot />
     <ul class="sign-more-style">
       <li>

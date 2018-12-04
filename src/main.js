@@ -4,11 +4,20 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import a from './views/components/global.js'
+import Directives from './views/directives'
 
-//console.log(Vue.config);
+import Components from "@/views/components"
+
+Vue.use(Directives);
+
+Vue.use(Components);
+
 
 Vue.config.productionTip = false;
+var dd = {
+  age: 20,
+  hobby: 'drawing'
+}
 
 /* eslint-disable no-new */
 var vm = new Vue({

@@ -31,6 +31,7 @@
       <h5 class="sign-hr"><span>社交帐号直接注册</span></h5>
     </form-footer>
     <error />
+    <vertify-img ref="vertifyImg" />
   </div>
 </template>
 <style lang="scss">
@@ -53,21 +54,24 @@
 import FormFooter from "./Footer"
 import Error from "../common/error"
 import Loading from "../common/Loading"
+import VertifyImg from "../common/vertify-img/Index"
+import c from "data"
 export default {
   data() {
     return {
       isvertify: false,
       issubmiting: false,
       issign: true,
-      nickname: "",
-      password: "",
-      telephone: ""
+      nickname: "karry",
+      password: "123456",
+      telephone: "15813390656"
     }
   },
   components: {
     FormFooter,
     Error,
-    Loading
+    Loading,
+    VertifyImg
   },
   methods: {
     togglesign: function() {
@@ -76,9 +80,10 @@ export default {
     submit: function() {
       this.issubmiting = true;
       setTimeout(() => {
-        this.issubmiting = false;
-        //this.sign.isSignIned = true;
-        this.$router.push('/');
+        var vimg = this.$refs.vertifyImg.open = true;
+        /* this.issubmiting = false;
+         c.isSignIned = true;
+         this.$router.push('/');*/
       }, 1000)
     }
   }

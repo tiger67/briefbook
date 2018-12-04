@@ -1,23 +1,24 @@
 <template>
-  <div class="board">
+  <div class="board" v-once>
     <router-link v-for="(a,i) in lists" :key="a.url" target="_blank" :to="a.url">
       <img :src="a.img">
     </router-link>
   </div>
 </template>
-<style>
+<style lang="scss">
 .board {
-  margin-top: -4px;
-  padding-bottom: 4px;
-  min-height: 228px;
-}
-
-.board>a>img {
-  width: 100%;
-  min-height: 50px;
-  margin-bottom: 6px;
-  border-radius: 4px;
-  display: block;
+    margin-top: -4px;
+    padding-bottom: 4px;
+    min-height: 228px;
+    a {
+        img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 6px;
+            border-radius: 4px;
+            display: block;
+        }
+    }
 }
 
 </style>

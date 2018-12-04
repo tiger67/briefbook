@@ -8,6 +8,7 @@
 </template>
 <script>
 import Editor from "./editor"
+
 export default {
   data() {
     return {
@@ -16,17 +17,6 @@ export default {
   },
   components: {
     Editor
-  },
-  mounted: function() {
-    /* console.log(this.$route)
-     */
-  },
-  watch: {
-    '$route': function(to, from) {
-      if (to !== from) {
-
-      }
-    }
   }
 }
 

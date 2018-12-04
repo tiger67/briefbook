@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  var MyPromise = (function() {
+    function changeState(status) {
+      this["[[PromiseStatus]]"] = "resovled";
+      if (this.dispatch) {
+        this.dispatch();
+      }
+    }
+
+    function MyPromise(fn) {
+      var resovlefn, rejectfn, tem = [];
+      var change = function() {}
+
+      var resovle = function(response) {
+
+        changeState.call(this, "resovled");
+        this["[[PromiseValue]]"] = response;
+        setTimeout(function() {
+
+          catchfn(function() {
+            console.log("sjssjsjjs");
+            console.log(resovlefn);
+            resovlefn && resovlefn(response)
+          })
+        }, 0);
+      }
+      var reject = function(response) {
+        changeState.call(this, "rejected");
+        this["[[PromiseValue]]"] = response;
+        setTimeout(function() {
+          catchfn(function() { rejectfn && rejectfn(response) })
+        }, 0);
+      }
+      var catchfn = function(afn) {
+        try {
+          afn()
+        } catch (e) {
+          setTimeout(function() {
+            this.catchfn && this.catchfn(e)
+          }.bind(this), 0);
+        }
+      }.bind(this);
+
+      catchfn(function() {
+        this["[[PromiseStatus]]"] = "pending";
+        console.log('-----------------------------');
+        fn(resovle, reject);
+      })
+    }
+
+    MyPromise.prototype.then = function(fn1, fn2) {
+      resovlefn = fn1;
+      rejectfn = fn2;
+      return this;
+    };
+
+    MyPromise.prototype.catch = function(fn) {
+      this.catchfn = fn.bind(this);
+    };
+
+    MyPromise.resovle = function(data) {
+      var p = new Promise(function(resovle) {
+        resovle(data)
+      })
+      return p;
+    }
+    MyPromise.reject = function(data) {
+      return new Promise(void 0, function(reject) {
+        reject(data)
+      })
+    }
+    MyPromise.all = function(arr) {
+      var resolve, reject;
+
+      function isPending() {
+        return arr.some(function(p, index) {
+          return p["[[PromiseStatus]]"] == "pending"
+        })
+      }
+
+      function isResolved() {
+        return arr.every(function(p, index) {
+          return p["[[PromiseStatus]]"] == "resovled"
+        })
+      }
+
+      var p = new Promise(function(res, rej) {
+        resolve = res;
+        reject = rej;
+      });
+
+      function dispatch() {
+        var index = arr.indexOf(this);
+        p["[[PromiseValue]]"][index] = this["[[PromiseValue]]"];
+        if (!isPending()) {
+          if (isResolved()) {
+            resolve.call(p, p["[[PromiseValue]]"]);
+          } else {
+            var len = arr.length;
+            var respArr = [];
+            while (len--) {
+              var tem = arr[len];
+              if (tem["[[PromiseStatus]]"] == "rejected") {
+                respArr.push(tem["[[PromiseValue]]"]);
+              }
+            }
+            reject.call(p, respArr);
+          }
+        }
+      }
+      p["[[PromiseValue]]"] = arr.map(function(pitem) {
+        pitem.dispatch = dispatch;
+        return pitem["[[PromiseValue]]"]
+      })
+      return p;
+    }
+    MyPromise.race = function(arr) {
+      var p = new Promise();
+      arr.foreach(function(pitem) {
+
+      })
+      return p
+    }
+    return MyPromise;
+
+  }())
+
+  console.dir(MyPromise);
+
+  var a = new MyPromise(function(resovle) {
+    /*setTimeout(function() { }, 3000);
+     */
+    resovle("a promise response");
+  });
+
+  console.log(a);
+  a.then(function(res) { console.log(res); });
+
+  /*var b = new MyPromise(function(resovle, reject) { reject("b promise response") }); MyPromise.all([a, b]).then(function(res) { console.log('------------so------------') console.log(res) }, function(res) { console.log('------------reject so------------') console.log(res) })
+   */
+
+
+  /* var p = new MyPromise(function(resovle, reject) {
+     console.log(this);
+     console.log('8888888');
+     throw 999
+   })
+   p.catch(function(e) {
+     console.log(e);
+   })
+   console.log('33333333')*/
+
+  </script>
+</body>
+
+</html>

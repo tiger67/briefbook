@@ -2,8 +2,8 @@
   <div class="home-cmd-user">
     <div class="hcu-hd">
       <span>推荐作者</span>
-      <a class="change-btn" to="/" @click.prevent="change">
-        <i class="iconfont ic-search-change"></i>换一批</a>
+      <a class="change-btn" to="/" :class="{'running':running}" @click.prevent="change">
+        <i class="iconfont ic-search-change" ></i>换一批</a>
     </div>
     <ul class="hcu-lists">
       <li class="cmd-author-line" v-for="a in lists">
@@ -29,116 +29,6 @@
     </router-link>
   </div>
 </template>
-<style>
-.hasfollow:hover .hover-hid {
-  display: none;
-}
-
-.hasfollow:hover .hover-hid+span {
-  display: inline;
-}
-
-.hover-hid+span {
-  display: none;
-}
-
-.get-more {
-  position: absolute;
-  padding: 7px 7px 7px 12px;
-  left: 0;
-  width: 100%;
-  font-size: 13px;
-  color: #787878;
-  background-color: #f7f7f7;
-  border: 1px solid #dcdcdc;
-  border-radius: 4px;
-}
-
-.home-cmd-user {
-  margin-bottom: 20px;
-  padding-top: 0;
-  font-size: 13px;
-  text-align: center;
-  position: relative
-}
-
-.home-cmd-user a {
-  cursor: pointer;
-}
-
-.change-btn {
-  float: right;
-  display: inline-block;
-  font-size: 14px;
-  color: #969696;
-}
-
-.author-name {
-  padding-top: 5px;
-  margin-right: 60px;
-  font-size: 14px;
-  display: block;
-}
-
-.change-btn>i {
-  margin-right: 3px;
-}
-
-.hcu-hd {
-  font-size: 14px;
-  color: #969696;
-  text-align: left;
-}
-
-.hcu-lists {
-  margin: 0 0 20px;
-  text-align: left;
-}
-
-.cmd-author-line {
-  line-height: 20px;
-  margin-top: 15px;
-}
-
-.cmd-author-line p {
-  margin-top: 2px;
-  font-size: 12px;
-  color: #969696;
-}
-
-.cmd-author-line .follow-btn {
-  float: right;
-  margin-top: 5px;
-  padding: 0;
-  font-size: 13px;
-}
-
-.cmd-author-line .follow {
-  color: #42c02e;
-}
-
-.cmd-author-line .hasfollow {
-  color: #969696;
-}
-
-.cmd-author-line .avatar {
-  float: left;
-  width: 48px;
-  height: 48px;
-  margin-right: 10px;
-  display: block;
-  cursor: pointer;
-}
-
-.cmd-author-line .avatar>img {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  vertical-align: middle;
-}
-
-</style>
 <script>
 const datalists = [
   { name: '简书版权', avatar: require("@/assets/home/author/1.jpg"), words: 423735, likes: 36208 },
@@ -155,7 +45,8 @@ const datalists = [
 export default {
   data() {
     return {
-      lists: datalists.slice(0, 5)
+      lists: datalists.slice(0, 5),
+      running: false
     }
   },
   methods: {
@@ -167,18 +58,142 @@ export default {
     change: (() => {
       const deg = 0;
       return function() {
-        if (this.lists[0].words == 423735) {
-          setTimeout(() => {
-            this.lists = datalists.slice(5);
-          }, 600)
-        } else {
-          setTimeout(() => {
-            this.lists = datalists.slice(0, 5);
-          }, 600)
+        if (this.running) {
+          return;
         }
+        this.running = true;
+        setTimeout(() => {
+          if (this.lists[0].words == 423735) {
+            this.lists = datalists.slice(5);
+          } else {
+            this.lists = datalists.slice(0, 5);
+          }
+          this.running = false;
+        }, 600);
       }
     })()
   }
 }
 
 </script>
+<style lang="scss">
+.home-cmd-user {
+    margin-bottom: 20px;
+    padding-top: 0;
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+    a {
+        cursor: pointer;
+    }
+    .running {
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(1turn);
+            }
+        }
+        &>i {
+            display: inline-block;
+            animation: rotate 1s ease;
+        }
+    }
+    .hcu-hd {
+        font-size: 14px;
+        color: #969696;
+        text-align: left;
+    }
+    .hcu-lists {
+        margin: 0 0 20px;
+        text-align: left;
+
+        .cmd-author-line {
+            line-height: 20px;
+            margin-top: 15px;
+            p {
+                margin-top: 2px;
+                font-size: 12px;
+                color: #969696;
+            }
+
+            .follow-btn {
+                float: right;
+                margin-top: 5px;
+                padding: 0;
+                font-size: 13px;
+            }
+
+            .follow {
+                color: #42c02e;
+            }
+
+            .hasfollow {
+                color: #969696;
+                .hover-hid+span {
+                    display: none;
+                }
+                &:hover {
+                    .hover-hid {
+                        display: none;
+                        &+span {
+                            display: inline;
+                        }
+                    }
+                }
+            }
+
+            .avatar {
+                float: left;
+                width: 48px;
+                height: 48px;
+                margin-right: 10px;
+                display: block;
+                cursor: pointer;
+                &>img {
+                    width: 100%;
+                    height: 100%;
+                    border: 1px solid #ddd;
+                    border-radius: 50%;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+
+
+    .get-more {
+        position: absolute;
+        padding: 7px 7px 7px 12px;
+        left: 0;
+        width: 100%;
+        font-size: 13px;
+        color: #787878;
+        background-color: #f7f7f7;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+    }
+
+    .change-btn {
+        float: right;
+        display: inline-block;
+        font-size: 14px;
+        color: #969696;
+        &>i {
+            margin-right: 3px;
+        }
+    }
+    .author-name {
+        padding-top: 5px;
+        margin-right: 60px;
+        font-size: 14px;
+        display: block;
+    }
+}
+
+</style>
+<style>
+
+
+</style>

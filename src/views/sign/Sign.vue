@@ -6,7 +6,6 @@
         <h3 class="fgpwd-title">用手机号重置密码</h3>
       </header>
       <header v-else>
-        <!-- :class="" -->
         <router-link to="/sign_in">登录</router-link>
         <b>·</b>
         <router-link to="/sign_up">注册</router-link>
@@ -21,9 +20,6 @@
 
 </style>
 <script>
-/*import "./asign-page.css"; import "./asign-form.css";
- */
-
 export default {
   methods: {}
 }

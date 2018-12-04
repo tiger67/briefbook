@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  var p = new Promise(function(resovle, reject) {
+    // console.log(this);
+    //console.log('8888888');
+    throw 999
+  }).then(function() {
+    console.log(arguments);
+  })
+  //console.log(1000);
+  console.dir(p);
+  p.catch(function(e) {
+    console.log(e);
+  })
+  console.log('33333333')
+
+  </script>
+</body>
+
+</html>

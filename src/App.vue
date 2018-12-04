@@ -16,9 +16,7 @@ export default {
 }
 
 .fade-enter-active,
-.fade-leave-active {
-    /* transition: all .2s ease; */
-}
+.fade-leave-active {}
 
 .fade-enter,
 .fade-leave-active {

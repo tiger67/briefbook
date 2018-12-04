@@ -62,7 +62,7 @@
         /* top: 0px; */
         width: 100%;
         position: relative;
-        top: -30px;
+
         /*  height: 112%; */
         user-select: none;
       }
@@ -73,6 +73,29 @@
         width: 100%;
         height: 100%;
         /*  border: 2px solid red; */
+      }
+      .vertify-msg {
+        height: 32px;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        line-height: 32px;
+        opacity: 0;
+        color: #fff;
+        font-size: 16px;
+        transition: all .3s ease-out;
+        bottom: -32px;
+        z-index: 10;
+        &.showvalid {
+          bottom: 0px;
+          opacity: 1;
+        }
+        &.v-error {
+          background-color: #ea6f5a;
+        }
+        &.v-right {
+          background-color: #00bb29;
+        }
       }
       .mark {
         position: absolute;
@@ -104,8 +127,8 @@
       text-align: left;
       .code-space {
         display: block;
-        margin-top: -35px;
-        margin-left: 146px;
+        margin-top: -42px;
+        margin-left: 156px;
       }
       .v-hd-w {
         font-size: 16px;
@@ -115,7 +138,6 @@
         display: inline-block;
         vertical-align: top;
       }
-
       .sp {
         color: #1c75e4;
       }
@@ -127,7 +149,7 @@
       text-align: left;
       position: relative;
       .v-btn {
-        background: url("../../assets/sprite.1.4.3.png");
+        background: url("./assets/sprite.1.4.3.png");
         display: inline-block;
         width: 20px;
         height: 20px;
@@ -135,16 +157,9 @@
         margin-top: 15px;
         outline: none;
       }
-      .vfy-close-btn {
-
-        /*  background-size: 280%;
-       background-position: 0 6.70103%;
-       overflow: visible; */
-      }
+      .vfy-close-btn {}
       .vfy-flash-btn {
         background-position: 0 67.01031%;
-        /*  background-size: 280%;
-       background-position: 0 67.01031%; */
       }
       .quer-btn {
         display: block;
@@ -162,6 +177,9 @@
         font-size: 16px;
         letter-spacing: 2px;
         color: white;
+        /*  &.active {
+         opacity: 1;
+       } */
       }
     }
   }

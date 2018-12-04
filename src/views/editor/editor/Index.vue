@@ -1,55 +1,89 @@
 <template>
-  <div class='editor'>
-    <span class="save-tip">已保存</span>
-    <div>
-      <input type="text" class="title" value="2018-09-23">
-      <ul class="editor-tool-wrap clearfix">
-        <li class="sp-fr send-btn">
-          <a href="javascript:void(0)">
-        	<i class="fa fa-mail-forward"></i>
-        	发布文章
-        </a>
-        </li>
-        <li> <a href="javascript:void(0)" class="fa fa-bold has-sub"></a>
-          <ul class="sub-tool">
-            <li><a href="javascript:void(0)" class="fa fa-bold"></a></li>
-            <li><a href="javascript:void(0)" class="fa fa-italic"></a></li>
-            <li><a href="javascript:void(0)" class="fa fa-strikethrough"></a></li>
-            <li><a href="javascript:void(0)" class="fa fa-quote-left"></a></li>
-          </ul>
-        </li>
-        <li> <a href="javascript:void(0)" class="fa fa-picture-o"></a></li>
-        <li> <a href="javascript:void(0)" class="fa fa-undefined has-sub">H1</a>
-          <ul class="sub-tool">
-            <li><a href="javascript:void(0)" class="fa fa-undefined">H1</a></li>
-            <li><a href="javascript:void(0)" class="fa fa-undefined">H2</a></li>
-            <li><a href="javascript:void(0)" class="fa fa-undefined">H3</a></li>
-            <li><a href="javascript:void(0)" class="fa fa-undefined">H4</a></li>
-          </ul>
-        </li>
-        <li>
-          <!-- <a href="javascript:void(0)" class="fa fa-undefined">—</a> -->
-          <ul>
-            <li><a href="javascript:void(0)" class="fa fa-undefined">—</a></li>
-            <li><a href="javascript:void(0)" class="fa fa-link"></a></li>
-            <li><a href="javascript:void(0)" class="fa fa-youtube-play"></a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="javascript:void(0)" class="fa fa-undo has-sub"></a>
-          <ul class="sub-tool">
-            <li><a href="javascript:void(0)" class="fa fa-undo"></a></li>
-            <li><a href="javascript:void(0)" class="fa fa-repeat"></a></li>
-          </ul>
-        </li>
-        <li> <a href="javascript:void(0)" class="fa fa-clock-o"></a></li>
-        <li class="sp-fr"> <a href="javascript:void(0)" class="fa fa-expand"></a></li>
-        <li class="sp-fr"> <a href="javascript:void(0)" class="fa fa-floppy-o"></a></li>
-      </ul>
+  <div class='editor-page'>
+    <span class="save-tip">{{d.isSaving ? "保存中..." : "已保存"}}</span>
+    <div class="edt-container">
+      <input type="text" class="title" v-model="d.title" @input="saveTitle">
+      <editor-header />
+      <editor-textarea />
     </div>
+    <loading ref="loading" :text="'内容加载中...'" />
   </div>
 </template>
+<script>
+import EditorHeader from './EditorHeader'
+import EditorTextarea from './EditorTextarea'
+import d from "./data"
+import API from "../api"
+import getRefs from "../common/getRefs"
+import Loading from "../common/loading/Index"
+var temptitle = "";
+
+export default {
+  data() {
+    return {
+      d,
+      loadingdata: false
+    }
+  },
+  methods: {
+    saveTitle() {
+      if (!d.isSaving && temptitle != d.title) {
+        temptitle = d.title;
+        d.isSaving = true;
+        //console.log(this.$route);
+        var r = this.$route;
+        var note = { title: d.title, noteId: r.params.note_id };
+        API.updateNote({ note }).then(res => {
+          var $note = getRefs.getNote(this);
+          $note.freshNote(res.data);
+          d.isSaving = false;
+        })
+      }
+    },
+    openNode() {
+      if (this.$refs.loading) {
+        this.$refs.loading.show = true;
+      }
+      setTimeout(() => {
+        /*var note = getRefs.getNote(this).getNote();
+         */
+        // console.log(this.$route.params.note_id);
+        API.findNoteById({ noteId: this.$route.params.note_id }).then(res => {
+          if (res.code === 0) {
+            d.title = res.data.title;
+          }
+          if (this.$refs.loading) {
+            this.$refs.loading.show = false;
+          }
+        })
+      }, 100)
+    },
+    init() {}
+  },
+  mounted() {
+    this.openNode();
+  },
+  watch: {
+    $route(to, from) {
+      var to_note_id = to.params && to.params.note_id;
+      var from_note_id = from.params && from.params.note_id;
+      if (to_note_id != from_note_id) {
+        this.openNode();
+      }
+    }
+  },
+  components: {
+    EditorHeader,
+    EditorTextarea,
+    Loading,
+  }
+}
+
+</script>
 <style lang="scss">
-@import "./index.scss"
+@import "./scss/index.scss";
+.edt-container {
+    height: 100%;
+}
 
 </style>

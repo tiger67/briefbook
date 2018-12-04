@@ -2,14 +2,14 @@
   <div class="sign-form forget-password-pg">
     <form>
       <div class="input-box">
-        <input type="text" placeholder="手机号" v-model="mobile" v-error="'empty,mobile,mobile2,:手机号'">
+        <input type="text" placeholder="手机号" v-model="telephone" v-error="'empty,mobile,mobilefilter,mobile2,:手机号'">
         <input type="text" name="name" hidden>
         <i class="iconfont ic-phonenumber"></i>
         <div class="error-tip"></div>
       </div>
       <div class="input-box">
         <input type="password" name="password" hidden>
-        <input type="text" placeholder="短信验证码" v-model="smsCode" v-error="'empty,:验证码'">
+        <input type="text" placeholder="短信验证码" v-model="smsCode" v-error="':验证码'">
         <i class="iconfont ic-verify"></i>
         <a class="sign-resend sign-btn" :class="{'active':mobileisvalid && !smsCodesending}" href="javascript:void(0)">{{smsCodesended ? "已发送" :smsCodesending ? "正在发送...":'发送验证码'}}</a>
         <div class="error-tip"></div>
@@ -34,10 +34,10 @@
       </div>
     </form>
     <div class="other-link">
-      <router-link to="/sign_in"> <i class="iconfont ic-back"></i>返回登录注册</router-link>
+      <router-link to="/sign_in"><i class="iconfont ic-back"></i>返回登录注册</router-link>
     </div>
     <error />
-  </div>
+    <vertify-img ref="vertifyImg" />
   </div>
 </template>
 <style lang="scss">
@@ -48,7 +48,6 @@
             background: #3194d0;
         }
     }
-
     .other-link {
         margin-top: 30px;
         a {
@@ -65,20 +64,21 @@
 
 </style>
 <script>
-/*import API from "@/api"*/
 import data from "data";
 import Error from "../common/error"
 import Loading from "../common/Loading"
+import VertifyImg from "../common/vertify-img/Index"
 export default {
   data() {
     return {
       issubmiting: false,
       isvertify: false,
       issign: true,
-      mobile: "13510022050",
-      password: "",
-      repassword: "",
-      smsCode: "",
+      nickname: "karry",
+      password: "123456",
+      telephone: "15813390657",
+      repassword: "123456",
+      smsCode: "1234",
       sign: data,
       mobileisvalid: false,
       mobileisvertifying: false,
@@ -89,15 +89,15 @@ export default {
   },
   components: {
     Error,
-    Loading
+    Loading,
+    VertifyImg
   },
   methods: {
     submit() {
       this.issubmiting = true;
       setTimeout(() => {
+        this.$refs.vertifyImg.open = true
         this.issubmiting = false;
-        this.sign.isSignIned = true;
-        this.$router.push('/');
       }, 1000)
     }
   }

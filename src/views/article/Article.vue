@@ -11,15 +11,17 @@
 </template>
 <style lang="scss">
 .article-single {
-  padding-top: 5px;
-  padding-bottom: 40px;
-  * {
-    box-sizing: border-box;
-  }
-  .comment-panel {
-    width: 675px;
-    margin: 130px auto 0;
-  }
+    height: 700px;
+    padding-top: 5px;
+    padding-bottom: 40px;
+    width: 620px;
+    margin: 0 auto;
+    * {
+        box-sizing: border-box;
+    }
+    .comment-panel {
+        margin: 130px auto 0;
+    }
 }
 
 </style>
@@ -35,9 +37,9 @@ export default {
     return {}
   },
   components: {
-    CommentPanel,
+    ArticleHeader,
     AtcContent,
-    ArticleHeader
+    CommentPanel
   }
 }
 

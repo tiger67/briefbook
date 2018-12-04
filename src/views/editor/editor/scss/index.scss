@@ -1,0 +1,45 @@
+.editor-page {
+  position: relative;
+  height: 100vh;
+  padding-top: 20px;
+  text-align: left;
+  /* border: 1px solid red; */
+  .save-tip {
+    position: absolute;
+    right: 5px;
+    top: 2px;
+  }
+  .title {
+    font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
+    width: 100%;
+    padding: 0 80px 10px 40px;
+    margin-bottom: 0;
+    border: none;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 30px;
+    box-shadow: none;
+    color: #595959;
+    background-color: transparent;
+    outline: none;
+    border-radius: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
+  zoom: 1;
+}
